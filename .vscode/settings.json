@@ -2,8 +2,9 @@
 	"deploy": {
 		"ignore": [
 			"/.vscode/*",
-			"/.editorconfig/*",
-			"/.gitignore/*",
+			"/.editorconfig",
+			"/.gitignore",
+			"/application/config/*"
 
 		],
 		"targets": [{

@@ -1,8 +1,7 @@
 <?php if (isset($_SESSION['login']) && $_SESSION == true) {
-    redirect("usuarios_c/" . $_SESSION[] . "");
-    // FIXME:
+    redirect("usuarios_c/" . $_SESSION['usuario']);
 } ?>
-<div class=" container mt - 5 ">
+<div class="container mt-5">
     <div class="row">
         <div class="col">
             <div id="feedback" class="alert alert-success" hidden></div>
