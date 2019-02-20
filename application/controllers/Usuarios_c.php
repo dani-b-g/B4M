@@ -50,7 +50,6 @@ class Usuarios_c extends CI_Controller
     {
         // TODO: TERMINAR LOGIN
         $this->load->model("Usuarios_m");
-        print_r($this->input->post('nombre_usu'));
         $respuesta = $this->Usuarios_m->getLogin($this->input->post());
 
         if ($respuesta) {

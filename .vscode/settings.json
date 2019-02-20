@@ -4,7 +4,8 @@
 			"/.vscode/*",
 			"/.editorconfig",
 			"/.gitignore",
-			"/application/config/*"
+			"/application/config/*",
+			"/user_guide/*"
 
 		],
 		"targets": [{
@@ -16,7 +17,6 @@
 			"port": 22,
 			"user": "danielb",
 			"password": "dani975965",
-			"checkBeforeDeploy": true,
 			"mappings": [{
 				"source": "C:/Users/Usuario/Dropbox/Proyectos/CodeIgniter/proyectofinal",
 				"target": "/home/danielb/public_html"

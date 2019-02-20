@@ -10,6 +10,9 @@ class Inicio_c extends CI_Controller
 		$datos['titulo'] = "Inicio";
 		$datos['contenido'] = "inicio_v";
 
+		$this->load->model("Instrumentos_m");
+		$datos['instrumentos'] = $this->Instrumentos_m->getIns();
+
 		$this->load->view('template_v', $datos);
 	}
 }

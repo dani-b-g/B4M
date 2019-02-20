@@ -133,13 +133,15 @@
                             <input id="estilo_usu" name="estilo_usu" placeholder="Estilo músical" maxlength="25"
                                 class="form-control" type="text">
                         </div>
-                        <!-- TODO: Tienes que hacer los instrumentos para poder termiar el formulario -->
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label for="instrumentos">Instrumentos</label>
-                            <select id="instrumentos" name="instrumentos[]" class="custom-select" multiple>
-                                <option value="test">TEST</option>
+                            <select id="instrumentos" name="instrumentos[]" class="form-control selectpicker" multiple>
+                                <?php foreach ($instrumentos as $value) : ?>
+                                <option value="<?php echo $value['id_ins'] ?>"><?php echo $value['nombre_ins'] ?>
+                                </option>
+                                <?php endforeach; ?>
                             </select>
-                        </div> -->
+                        </div>
                         <div class="md-form amber-textarea active-amber-textarea-2">
                             <label class="" for="desc_usu">Descripcion</label>
                             <textarea type="text" id="desc_usu" name="desc_usu" class="md-textarea form-control"
