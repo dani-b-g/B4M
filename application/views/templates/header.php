@@ -8,13 +8,13 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
     </script>
     <!-- Bootstrap CSS -->
-    <link href="assets/MDB/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/template.css">
     <?php echo "<script> let baseurl='" . base_url() . "'</script>" ?>
     <title>
@@ -33,13 +33,14 @@
 
 <body class="fondo-blur">
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark purple darken-4 lighten-1">
-        <a class="navbar-brand" href="<?php base_url(); ?>"><img id=logo
+        <a class="navbar-brand" href="<?php echo base_url(); ?>"><img id=logo
                 src="<?php echo (base_url()); ?>/assets/img/logo.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
             aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+            <?php if (isset($_SESSION['login']) && $_SESSION['login'] == true): ?>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo (base_url()); ?>">Inicio
@@ -64,7 +65,6 @@
                 </li>
                 <?php endif; ?>
             </ul>
-            <?php if (isset($_SESSION['login']) && $_SESSION['login'] == true): ?>
             <ul class="navbar-nav ml-auto nav-flex-icons">
                 <li class="nav-item">
                     <a class="nav-link waves-effect waves-light">1

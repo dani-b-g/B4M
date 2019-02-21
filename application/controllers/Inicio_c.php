@@ -4,15 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Inicio_c extends CI_Controller
 {
 
-	public function index()
-	{
- 		//datos para pasar a las vistas
-		$datos['titulo'] = "Inicio";
-		$datos['contenido'] = "inicio_v";
+    public function index()
+    {
+        //datos para pasar a las vistas
+        $datos['titulo'] = "B4M";
+        $datos['contenido'] = "inicio_v";
 
-		$this->load->model("Instrumentos_m");
-		$datos['instrumentos'] = $this->Instrumentos_m->getIns();
-
-		$this->load->view('template_v', $datos);
-	}
+        $this->load->view('templateinicio_v', $datos);
+    }
 }

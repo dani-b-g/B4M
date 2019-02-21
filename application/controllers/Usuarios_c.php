@@ -8,11 +8,14 @@ class Usuarios_c extends CI_Controller
     {
         // TODO: Crear vista de perfil
         // $user datos para pasar a las vistas
-        $datos['titulo'] = "Perfil de: ";
+        $datos['titulo'] = "Perfil de: ".$user;
         $datos['contenido'] = "inicio_v";
 
         $this->load->view('template_v', $datos);
     }
+
+
+    
 
     public function registrarUsuario()
     {
@@ -20,22 +23,22 @@ class Usuarios_c extends CI_Controller
         $_POST['pass_usu'] = password_hash($this->input->post("pass_usu"), PASSWORD_DEFAULT);
         $this->load->model("Usuarios_m");
         //para obtener los datos de los intrumentos y eliminarlo del post
-        $instrumentos = $this->input->post('instrumentos');
+        $instrumentos = $_POST['instrumentos'];
+
         unset($_POST['instrumentos']);
         if ($this->Usuarios_m->insertar($this->input->post())) {
             $last = $this->Usuarios_m->getIdLastUsu();
+            // print_r($instrumentos);
 
             foreach ($instrumentos as $value) {
-
                 $datos = array(
                     'instrumento' => $value,
                     'usuario' => $last
                 );
-
                 $this->Usuarios_m->insertarUsuIns($datos);
-                unset($datos);
+                $salida = "true";
             }
-            echo "true";
+            echo $salida;
         } else {
             echo "false";
         }
@@ -54,7 +57,8 @@ class Usuarios_c extends CI_Controller
     public function logout()
     {
         $dataSesion = array('usuario', 'login', 'tipo');
-        $this->session->unset_userdata();
+        $this->session->unset_userdata($dataSesion);
+        redirect(base_url());
     }
 
     public function login()

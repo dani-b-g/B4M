@@ -36,7 +36,7 @@ class Usuarios_m extends CI_Model
     public function getIdLastUsu()
     {
         $this->db->select_max('id_usu');
-        return $this->db->get("usuarios");
+        $resultado = $this->db->get("usuarios");
+        return $resultado->row()->id_usu;
     }
 }
-
