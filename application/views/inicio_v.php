@@ -5,13 +5,13 @@
     <div class="row">
         <div class="col">
             <div id="feedback" class="alert alert-success" hidden></div>
-            <?php if (isset($_SESSION['flashdata']) && !isset($_SESSION['login'])) : ?>
+            <?php if (isset($_SESSION['flashdata']) && !isset($_SESSION['login'])): ?>
             <div class=" alert alert-danger" role="alert ">
                 <?php echo $_SESSION['flashdata'];
                 unset($_SESSION['flashdata']); ?>
             </div>
             <?php endif; ?>
-            <?php if (isset($_SESSION['flashdata']) && $_SESSION['login'] == true) : ?>
+            <?php if (isset($_SESSION['flashdata']) && $_SESSION['login'] == true): ?>
             <div class="alert alert-success" role="alert">
                 <?php echo $_SESSION['flashdata'];
                 unset($_SESSION['flashdata']); ?>
@@ -23,7 +23,7 @@
         <div class="card-body ">
             <h5 class="card-title">Login</h5>
             <div class="card-text">
-                <form method='post' action=" <?php echo base_url("usuarios_c/login") ?>">
+                <form method='post' action=" <?php echo base_url(" usuarios_c/login") ?>">
                     <div class="form-group">
                         <label for="nombre_usu">Usuario</label>
                         <div class="input-group">
@@ -51,7 +51,6 @@
                         <input id="recordar" name="recordar" class="custom-control-input" type="checkbox">
                         <label for="recordar" class="custom-control-label">Recuardame</label>
                     </div>
-
                     <button type="submit" class="btn btn-primary">Login</button>
                     <button class="btn btn-secondary" id="btnregistro" data-toggle="modal" data-target="#registro"
                         type="button">Registrarse</button>
@@ -68,7 +67,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
+                <!-- FIXME: ARREGLAR EL FILTRADO EN EL CONTROLADORES DE USUARIOS -->
                 <!-- A partir de aqui es el formulario de registro (modal) -->
                 <div class="modal-body">
                     <form method="post" id='formregistro' action="">
@@ -136,8 +135,9 @@
                         <div class="form-group">
                             <label for="instrumentos">Instrumentos</label>
                             <select id="instrumentos" name="instrumentos[]" class="form-control selectpicker" multiple>
-                                <?php foreach ($instrumentos as $value) : ?>
-                                <option value="<?php echo $value['id_ins'] ?>"><?php echo $value['nombre_ins'] ?>
+                                <?php foreach ($instrumentos as $value): ?>
+                                <option value="<?php echo $value['id_ins'] ?>">
+                                    <?php echo $value['nombre_ins'] ?>
                                 </option>
                                 <?php endforeach; ?>
                             </select>
@@ -149,18 +149,12 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-
                     <button class=" btn btn-success" id="btnmodal" type="submit">Enviar</button>
-
                 </div>
                 </form>
             </div>
         </div>
     </div>
-
-
-
-
 </div>
 <script>
 /**

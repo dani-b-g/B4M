@@ -7,7 +7,7 @@ class Usuarios_c extends CI_Controller
     public function index($user)
     {
         // TODO: Crear vista de perfil
- 		//datos para pasar a las vistas
+        // $user datos para pasar a las vistas
         $datos['titulo'] = "Perfil de: ";
         $datos['contenido'] = "inicio_v";
 
@@ -16,17 +16,29 @@ class Usuarios_c extends CI_Controller
 
     public function registrarUsuario()
     {
-        // $this->load->helper("form");
-        // print_r($_POST);
-        // print_r($this->input->post());
+
         $_POST['pass_usu'] = password_hash($this->input->post("pass_usu"), PASSWORD_DEFAULT);
         $this->load->model("Usuarios_m");
+        //para obtener los datos de los intrumentos y eliminarlo del post
+        $instrumentos = $this->input->post('instrumentos');
+        print_r($instrumentos);
+        unset($_POST['instrumentos']);
         if ($this->Usuarios_m->insertar($this->input->post())) {
-            echo "true";
+            $last = $this->Usuarios_m->getIdLastUsu();
+            echo ('XDDD' . $last);
+            foreach ($instrumentos as $value) {
 
+                $datos = array(
+                    'instrumento' => $value,
+                    'usuario' => $last
+                );
+
+                $this->Usuarios_m->insertarUsuIns($datos);
+                unset($datos);
+            }
+            echo "true";
         } else {
             echo "false";
-
         }
     }
 
@@ -48,7 +60,6 @@ class Usuarios_c extends CI_Controller
 
     public function login()
     {
-        // TODO: TERMINAR LOGIN
         $this->load->model("Usuarios_m");
         $respuesta = $this->Usuarios_m->getLogin($this->input->post());
 
@@ -65,7 +76,6 @@ class Usuarios_c extends CI_Controller
 
                 $this->session->set_userdata($dataSesion);
                 redirect('/inicio_c');
-
             } else {
                 $_SESSION['flashdata'] = "La contraseña no existe";
             }
@@ -74,6 +84,5 @@ class Usuarios_c extends CI_Controller
 
             redirect('/inicio_c');
         }
-
     }
 }

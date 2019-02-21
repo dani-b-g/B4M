@@ -17,7 +17,9 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/template.css">
     <?php echo "<script> let baseurl='" . base_url() . "'</script>" ?>
-    <title><?php echo $titulo ?></title>
+    <title>
+        <?php echo $titulo ?>
+    </title>
     <style>
     #logo {
         width: 125px;
@@ -49,7 +51,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo (base_url()); ?>">Ver avisos</a>
                 </li>
-                <?php if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'a') : ?>
+                <?php if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'a'): ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Administración
@@ -62,7 +64,7 @@
                 </li>
                 <?php endif; ?>
             </ul>
-            <?php if (isset($_SESSION['login']) && $_SESSION['login'] == true) : ?>
+            <?php if (isset($_SESSION['login']) && $_SESSION['login'] == true): ?>
             <ul class="navbar-nav ml-auto nav-flex-icons">
                 <li class="nav-item">
                     <a class="nav-link waves-effect waves-light">1
