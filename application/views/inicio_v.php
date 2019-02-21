@@ -51,6 +51,7 @@
                         <input id="recordar" name="recordar" class="custom-control-input" type="checkbox">
                         <label for="recordar" class="custom-control-label">Recuardame</label>
                     </div>
+
                     <button type="submit" class="btn btn-primary">Login</button>
                     <button class="btn btn-secondary" id="btnregistro" data-toggle="modal" data-target="#registro"
                         type="button">Registrarse</button>
@@ -68,6 +69,7 @@
                     </button>
                 </div>
                 <!-- FIXME: ARREGLAR EL FILTRADO EN EL CONTROLADORES DE USUARIOS -->
+
                 <!-- A partir de aqui es el formulario de registro (modal) -->
                 <div class="modal-body">
                     <form method="post" id='formregistro' action="">

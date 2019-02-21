@@ -21,11 +21,10 @@ class Usuarios_c extends CI_Controller
         $this->load->model("Usuarios_m");
         //para obtener los datos de los intrumentos y eliminarlo del post
         $instrumentos = $this->input->post('instrumentos');
-        print_r($instrumentos);
         unset($_POST['instrumentos']);
         if ($this->Usuarios_m->insertar($this->input->post())) {
             $last = $this->Usuarios_m->getIdLastUsu();
-            echo ('XDDD' . $last);
+
             foreach ($instrumentos as $value) {
 
                 $datos = array(
