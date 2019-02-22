@@ -5,7 +5,8 @@
 			"/.editorconfig",
 			"/.gitignore",
 			"/application/config/*",
-			"/user_guide/*"
+			"./user_guide",
+			"/.htaccess"
 
 		],
 		"targets": [{

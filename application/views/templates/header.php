@@ -65,26 +65,36 @@
                 </li>
                 <?php endif; ?>
             </ul>
-            <ul class="navbar-nav ml-auto nav-flex-icons">
-                <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light">1
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </li>
-                <li class="nav-item avatar dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <img id="avatar" src="<?php echo base_url() ?>assets/img/usuario.jpg"
-                            class="rounded-circle z-depth-0" alt="avatar image">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-secondary"
-                        aria-labelledby="navbarDropdownMenuLink-55">
-                        <a class="dropdown-item" href="<?php echo base_url("/usuarios_c/logout") ?>">Logout</a>
-                        <a class="dropdown-item" href="#">Perfil</a>
-                        <a class="dropdown-item" href="#">Mensajes</a>
+            <form class="form-inline">
+                <div class="input-group md-form form-sm form-1 pl-0">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text purple lighten-3" id="basic-text1"><i
+                                class="fas fa-search text-white" aria-hidden="true"></i></span>
                     </div>
-                </li>
-            </ul>
-            <?php endif; ?>
+                    <input class="form-control my-0 py-1" type="text" placeholder="Buscar usuarios">
+                </div>
+            </form>
+        </div>
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item">
+                <a class="nav-link waves-effect waves-light">1
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </li>
+            <li class="nav-item avatar dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <img id="avatar" src="<?php echo base_url() ?>assets/img/usuario.jpg"
+                        class="rounded-circle z-depth-0" alt="avatar image">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-secondary"
+                    aria-labelledby="navbarDropdownMenuLink-55">
+                    <a class="dropdown-item" href="<?php echo base_url("/usuarios_c/logout") ?>">Logout</a>
+                    <a class="dropdown-item" href="#">Perfil</a>
+                    <a class="dropdown-item" href="#">Mensajes</a>
+                </div>
+            </li>
+        </ul>
+        <?php endif; ?>
         </div>
     </nav>

@@ -29,6 +29,15 @@ class Usuarios_m extends CI_Model
         // $resultado = $this->db->query($sql, array($datos['usuario_cli']));
         // return $resultado->row();
     }
+    public function getPerfil($usuario)
+    {
+        $this->db->select();
+        $this->db->from("usuarios_instrumentos");
+        $this->db->where("nombre_usu", $usuario);
+        $resultado = $this->db->get();
+        return $resultado->result_array();
+
+    }
     public function insertarUsuIns($datos)
     {
         return $this->db->insert("usu_ins", $datos);

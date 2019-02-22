@@ -2,6 +2,9 @@
     <section class="view">
         <div class="row">
             <div class="col-md-6">
+                <?php if (isset($_SESSION['login'])) {
+                    redirect(base_url('login_c/'));
+                } ?>
 
                 <div class="d-flex flex-column justify-content-center align-items-center rgba-purple-light h-100">
                     <h1 class="heading display-3 m-5">Band 4 musicians</h1>
