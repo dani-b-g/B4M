@@ -17,6 +17,39 @@ class Usuarios_m extends CI_Model
         $this->db->where('nombre_usu', $usu);
         return $this->db->count_all_results();
     }
+    /**
+     * Remplazamos lso datos de la tabla con la del formulario
+     *
+     * @param Array $datos
+     * @return void
+     */
+    public function insertarCambiosUsu($datos)
+    {
+        $this->db->replace('usuarios', $datos)
+            ->where('id_usu', $datos['id_usu']);
+    }
+
+    /**
+     * Elimna toso los instrumentos de un usuario
+     *
+     * @param [type] $instrumentos
+     * @param [type] $usuario
+     * @return void
+     */
+    public function limpiarUsuIns($usuario)
+    {
+        $this->db->delete('usu_ins', array('usuarios' => $usuario));
+    }
+
+
+
+    public function getPass($usu)
+    {
+        return $this->db->select('pass_usu')
+            ->from('usuarios')
+            ->where('id_usu', $usu)
+            ->get()->row();
+    }
 
     public function getLogin($datos)
     {
@@ -25,9 +58,6 @@ class Usuarios_m extends CI_Model
         $this->db->where('nombre_usu', $datos['nombre_usu']);
         $resultado = $this->db->get();
         return $resultado->row();
-        // $sql = "SELECT * from clientes where usuario_cli=?";
-        // $resultado = $this->db->query($sql, array($datos['usuario_cli']));
-        // return $resultado->row();
     }
     public function getPerfil($usuario)
     {
@@ -36,7 +66,6 @@ class Usuarios_m extends CI_Model
         $this->db->where("nombre_usu", $usuario);
         $resultado = $this->db->get();
         return $resultado->result_array();
-
     }
     public function insertarUsuIns($datos)
     {

@@ -101,9 +101,9 @@
     </div>
     <!-- TODO: ENVIAR CAMBIOS DE PERFIL -->
     <!-- Modal -->
-    <div class="modal fade right" id="modalPerfil" tabindex="-1" role="dialog" aria-labelledby="modalPerfil"
+    <div class="modal fade " id="modalPerfil" tabindex="-1" role="dialog" aria-labelledby="modalPerfil"
         aria-hidden="true">
-        <div class="modal-dialog modal-full-height modal-right" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalPerfilHeader">Cambiar perfil</h5>
@@ -112,18 +112,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" id=formCambio action="">
-                        <div class="form-group">
-                            <label for="nombre_usum">Usuario</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                </div>
-                                <input id="nombre_usum" name="nombre_usu" value="<?php   ?>"
-                                    placeholder="Nombre de usuario" class="form-control" type="text" required
-                                    maxlength="15" required>
-                            </div>
-                        </div>
+                    <form method="post" id=formCambio action="<?php base_url('usuarios_c/enviarCambios/') ?>">
                         <div class="form-group">
                             <label for="email_usu">Email</label>
                             <div class="input-group">
@@ -142,9 +131,9 @@
                                     <span class="input-group-text " id=""><i class="fas fa-unlock"></i></span>
                                 </div>
                                 <input type="password" class="form-control" name="lastPass" id="lastPass"
-                                    placeholder="Contraseña" required>
+                                    placeholder="Contraseña antigua" required>
                                 <div class="input-group-append">
-                                    <span class="input-group-text " id=""><i id=""
+                                    <span class="input-group-text" id=""><i id=""
                                             class="fas fa-eye-slash verpass"></i></span>
                                 </div>
                             </div>
@@ -201,11 +190,16 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-
+                        <div class="md-form amber-textarea active-amber-textarea-2">
+                            <label class="" for="desc_usu">Descripcion</label>
+                            <textarea type="text" id="desc_usu" name="desc_usu" class="md-textarea form-control"
+                                rows="5"></textarea>
+                        </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" id="<?php $perfil[0]['id_usu'] ?>" class="btn btn-primary">Guardar
+                    <input id="id_usu" type="hidden" value="<?php echo $perfil[0]['id_usu'] ?>">
+                    <button type="submit" id="<?php echo $perfil[0]['id_usu'] ?>" class="btn btn-primary enviar">Guardar
                         cambios</button>
                 </div>
                 </form>
@@ -215,7 +209,6 @@
     <!-- Modal -->
 </div>
 <script>
-// TODO: Hacer validaciones de contraseñas, para revisar si es la de ese usuario con ajax
 // TODO: Que se muestren los instrumentos y los seleccionados por el usuario
 // NOTE: Tienes la id del usuario ne el boton de enviar
 /**
@@ -232,4 +225,25 @@ $('.verpass').on("click", function(event) {
 
     }
 });
+/**
+ * Comprobar que existe esa contraseña
+ */
+$('#lastPass').on("blur", function(event) {
+    $.post(baseurl + "usuarios_c/comprobarPass/", {
+        usuario: $(".enviar").attr("id"),
+        pass: $("#lastPass").val()
+    }).done(function(salida) {
+        if (salida == "false") {
+            $("#lastPass").popover({
+                title: 'La contraseña no es valida',
+                content: "Esa no es la contraseña antigua",
+                trigger: "manual"
+            }).popover("show");
+            $('.enviar').attr('disabled', true);
+        } else {
+            $("#lastPass").popover("hide");
+            $('.enviar').removeAttr('disabled');
+        }
+    })
+})
 </script>

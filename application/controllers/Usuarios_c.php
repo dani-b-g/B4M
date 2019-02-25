@@ -3,10 +3,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Usuarios_c extends CI_Controller
 {
-
+    /**
+     * Sera lo que cargue la viste de los perfiles de cada usuario
+     *
+     * @param [type] $user
+     * @return void
+     */
     public function perfil($user)
     {
-        // TODO: Crear vista de perfil
+        //en el caso de que el perfil exista lo mostrara
+        // if ($this->comprobarExiste($user) > 0) {
+
         // $user datos para pasar a las vistas
         $datos['titulo'] = "Perfil de: " . $user;
         $datos['contenido'] = "perfiles_v";
@@ -14,10 +21,50 @@ class Usuarios_c extends CI_Controller
         $datos['instrumentos'] = $this->Instrumentos_m->getIns();
         $this->load->model("Usuarios_m");
         $datos['perfil'] = $this->Usuarios_m->getPerfil($user);
-
+        // } else {
+        //  en el caso contrario lo enviara a una pagina de error
+        // $datos['titulo'] = "Perfil no existe";
+        // $datos['contenido'] = "errorperf_v";
+        // }
         $this->load->view('template_v', $datos);
     }
 
+    /**
+     * Comprobamos pass en el caso 
+     *
+     * @return void
+     */
+    public function comprobarPass()
+    {
+
+        $this->load->model("Usuarios_m");
+        $pass = $this->Usuarios_m->getPass($_POST['usuario']);
+
+        if (password_verify($_POST['pass'], $pass->pass_usu)) {
+            echo "true";
+        } else {
+            echo "false";
+        }
+    }
+    // FIXME: Aqui falla algo, revisar otra vez
+    public function enviarCambios()
+    {
+        $this->load->model("Usuarios_m");
+        //Para recuperar los intrumentos y eliminarlos del post
+        print_r($_POST);
+        die();
+        $instrumentos = $_POST['instrumentos'];
+        unset($_POST['instrumentos']);
+        $this->Usuarios_m->limpiarUsuIns($_POST['id_usu']);
+        foreach ($instrumentos as $value) {
+            $datos = array(
+                'instrumento' => $value,
+                'usuario' => $_POST['id_usu']
+            );
+            $this->Usuarios_m->insertarUsuIns($datos);
+        }
+        $this->Usuarios_m->insertarCambiosUsu($_POST);
+    }
 
 
 
@@ -33,7 +80,6 @@ class Usuarios_c extends CI_Controller
         unset($_POST['instrumentos']);
         if ($this->Usuarios_m->insertar($this->input->post())) {
             $last = $this->Usuarios_m->getIdLastUsu();
-            // print_r($instrumentos);
 
             foreach ($instrumentos as $value) {
                 $datos = array(
@@ -48,7 +94,12 @@ class Usuarios_c extends CI_Controller
             echo "false";
         }
     }
-
+    /**
+     * Copprueba si existe ese usuario ya en la BBDD
+     *
+     * @param String $user
+     * @return void
+     */
     public function comprobarExiste($user)
     {
         $user = strtolower($user);
@@ -56,14 +107,22 @@ class Usuarios_c extends CI_Controller
 
         echo $this->Usuarios_m->existeEnDB($user);
     }
-
+    /**
+ * Elimina todos los datos de sesion
+ *
+ * @return void
+ */
     public function logout()
     {
         $dataSesion = array('usuario', 'login', 'tipo', 'flashdata');
         $this->session->unset_userdata($dataSesion);
         redirect(base_url("login_c/"));
     }
-
+    /**
+     * Comprueba los datos y hace login
+     *
+     * @return void
+     */
     public function login()
     {
         $this->load->model("Usuarios_m");

@@ -10,8 +10,7 @@
                     <h1 class="heading display-3 m-5">Band 4 musicians</h1>
                     <h4 class="subheading font-weight-bold m-5">Unete y encuentra el musico que necesites U'rock</h4>
                     <div class="mr-auto">
-                        <a href="<?php echo base_url('login_c/') ?>"
-                            class="btn m-5 btn-lily btn-secondary btn-margin btn-rounded">Unete
+                        <a href="<?php echo base_url('login_c/') ?>" class="btn m-5 btn-lily btn-secondary btn-margin btn-rounded">Unete
                             <i class="fas fa-caret-right ml-3"></i></a>
                     </div>
                 </div>
@@ -31,4 +30,4 @@
 
 
 
-</div>
+</div> 
