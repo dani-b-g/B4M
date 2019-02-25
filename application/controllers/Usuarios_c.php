@@ -46,13 +46,11 @@ class Usuarios_c extends CI_Controller
             echo "false";
         }
     }
-    // FIXME: Aqui falla algo, revisar otra vez
     public function enviarCambios()
     {
         $this->load->model("Usuarios_m");
         //Para recuperar los intrumentos y eliminarlos del post
         print_r($_POST);
-        die();
         $instrumentos = $_POST['instrumentos'];
         unset($_POST['instrumentos']);
         $this->Usuarios_m->limpiarUsuIns($_POST['id_usu']);
@@ -64,6 +62,8 @@ class Usuarios_c extends CI_Controller
             $this->Usuarios_m->insertarUsuIns($datos);
         }
         $this->Usuarios_m->insertarCambiosUsu($_POST);
+        $_SESSION['flashdata'] = "Cambios del perfil realizados con exito";
+        redirect(base_url("usuarios_c/perfil/{$_SESSION['usuario']}"));
     }
 
 

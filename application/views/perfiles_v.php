@@ -5,6 +5,12 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col">
+            <?php if (isset($_SESSION['flashdata'])): ?>
+            <div class="alert alert-success" role="alert">
+                <?php echo $_SESSION['flashdata'];
+                unset($_SESSION['flashdata']); ?>
+            </div>
+            <?php endif; ?>
             <div class="card">
                 <div class="card-header row">
                     <div class="media">
@@ -112,7 +118,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" id=formCambio action="<?php base_url('usuarios_c/enviarCambios/') ?>">
+                    <form method="post" id=formCambio action="<?php echo base_url('usuarios_c/enviarCambios/') ?>">
                         <div class="form-group">
                             <label for="email_usu">Email</label>
                             <div class="input-group">
@@ -198,7 +204,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <input id="id_usu" type="hidden" value="<?php echo $perfil[0]['id_usu'] ?>">
+                    <input id="id_usu" name="id_usu" type="hidden" value="<?php echo $perfil[0]['id_usu'] ?>">
                     <button type="submit" id="<?php echo $perfil[0]['id_usu'] ?>" class="btn btn-primary enviar">Guardar
                         cambios</button>
                 </div>

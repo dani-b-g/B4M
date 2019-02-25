@@ -25,8 +25,22 @@ class Usuarios_m extends CI_Model
      */
     public function insertarCambiosUsu($datos)
     {
-        $this->db->replace('usuarios', $datos)
-            ->where('id_usu', $datos['id_usu']);
+        //seleccionamos los datos que queremos actualizar
+        $data = array(
+            'pass_usu' => $datos['pass_usu'],
+            'email_usu' => $datos['email_usu'],
+            'tipo_usu' => $datos['tipo_usu'],
+            'apenom_usu' => $datos['apenom_usu'],
+            'desc_usu' => $datos['desc_usu'],
+            'estilo_usu' => $datos['estilo_usu']
+
+        );
+
+        $this->db->where('id_usu', $datos['id_usu']);
+        return $this->db->update('usuarios', $data);
+
+        // $this->db->replace('usuarios', $datos)
+        //     ->where('id_usu', $datos['id_usu']);
     }
 
     /**
@@ -38,7 +52,8 @@ class Usuarios_m extends CI_Model
      */
     public function limpiarUsuIns($usuario)
     {
-        $this->db->delete('usu_ins', array('usuarios' => $usuario));
+        $this->db->where('usuario', $usuario);
+        return $this->db->delete('usu_ins');
     }
 
 
