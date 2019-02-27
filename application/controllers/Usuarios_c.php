@@ -169,4 +169,3 @@ class Usuarios_c extends CI_Controller
         redirect(base_url('login_c/'));
     }
 }
-

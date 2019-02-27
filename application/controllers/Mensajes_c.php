@@ -24,6 +24,7 @@ class Mensajes_c extends CI_Controller
         } else {
             $_SESSION['flashdata'] = "Hubo un error al enviar el mensaje";
         }
+        redirect("usuarios_c/perfil/{$_SESSION['usuario']}");
     }
     public function contMens()
     {
@@ -32,5 +33,6 @@ class Mensajes_c extends CI_Controller
         return $this->Mensajes_m->getMensajes($mensaje);
     }
     public function contNoLeidos($user)
+
     { }
 }
