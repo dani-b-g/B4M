@@ -30,6 +30,21 @@ class Usuarios_c extends CI_Controller
     }
 
     /**
+     * Funcion pra hacer un autosearch en ajax
+     *
+     * @return void
+     */
+    public function buscador()
+    {
+        // if (!isset($_POST['busqueda'])) {
+        //     echo "0";
+        // }
+        $this->load->model('Usuarios_c');
+        $busqueda = $_POST['busqueda'];
+        return $this->Usuarios_m->getBuscador($busqueda);
+    }
+
+    /**
      * Comprobamos pass en el caso 
      *
      * @return void
@@ -50,8 +65,8 @@ class Usuarios_c extends CI_Controller
     {
         $this->load->model("Usuarios_m");
         //Para recuperar los intrumentos y eliminarlos del post
-        print_r($_POST);
         $instrumentos = $_POST['instrumentos'];
+        $_POST['pass_usu'] = password_hash($this->input->post("pass_usu"), PASSWORD_DEFAULT);
         unset($_POST['instrumentos']);
         $this->Usuarios_m->limpiarUsuIns($_POST['id_usu']);
         foreach ($instrumentos as $value) {
@@ -100,8 +115,9 @@ class Usuarios_c extends CI_Controller
      * @param String $user
      * @return void
      */
-    public function comprobarExiste($user)
+    public function comprobarExiste()
     {
+        $user = $_GET['usuario'];
         $user = strtolower($user);
         $this->load->model("Usuarios_m");
 
@@ -118,6 +134,7 @@ class Usuarios_c extends CI_Controller
         $this->session->unset_userdata($dataSesion);
         redirect(base_url("login_c/"));
     }
+
     /**
      * Comprueba los datos y hace login
      *
@@ -149,8 +166,7 @@ class Usuarios_c extends CI_Controller
         } else {
             $_SESSION['flashdata'] = "El usuario " . $this->input->post('nombre_usu') . " no existe.";
         }
-        redirect(base_url('
-login_c/'));
+        redirect(base_url('login_c/'));
     }
 }
 

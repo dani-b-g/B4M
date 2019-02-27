@@ -229,7 +229,9 @@
     $('#nombre_usum').on("blur", function(event) {
 
 
-        $.get(baseurl + "usuarios_c/comprobarExiste/" + $('#nombre_usum').val()).done(function(salida) {
+        $.get(baseurl + "usuarios_c/comprobarExiste/", {
+            usuario: $('#nombre_usum').val()
+        }).done(function(salida) {
             if (salida >= 1) {
                 $("#nombre_usum").popover({
                     title: 'Usuario no valido',

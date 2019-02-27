@@ -48,9 +48,20 @@ class Usuarios_m extends CI_Model
         // $this->db->replace('usuarios', $datos)
         //     ->where('id_usu', $datos['id_usu']);
     }
+    public function getBuscador($key)
+    {
+        return $this->db->select('nombre_usu')
+            ->from("usuarios_instrumentos")
+            ->like("nombre_usu", $key)
+            ->or_like("apenom_usu", $key)
+            ->or_like("ciudad_usu", $key)
+            ->or_like("estilo_usu", $key)
+            ->or_loke("nombre_ins", $key)
+            ->get()->result();
+    }
 
     /**
-     * Elimna toso los instrumentos de un usuario
+     * Elminamos los instrumentos de un usuario
      *
      * @param [type] $instrumentos
      * @param [type] $usuario

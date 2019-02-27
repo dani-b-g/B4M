@@ -16,8 +16,21 @@ class Mensajes_c extends CI_Controller
 
         $this->load->view('template_v', $datos);
     }
+    public function enviarMen()
+    {
+        $this->load->model("Mensajes_m");
+        if ($this->Mensajes_m->enviarMensajes($_POST)) {
+            $_SESSION['flashdata'] = "Mensaje enviado con exito";
+        } else {
+            $_SESSION['flashdata'] = "Hubo un error al enviar el mensaje";
+        }
+    }
     public function contMens()
-    { }
-    public function conyNoLeidos()
+    {
+        $mensaje = $_POST['id_men'];
+        $this->load->model("Mensajes_m");
+        return $this->Mensajes_m->getMensajes($mensaje);
+    }
+    public function contNoLeidos($user)
     { }
 }

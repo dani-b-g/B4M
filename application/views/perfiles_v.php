@@ -118,29 +118,37 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="">
+                    <form method="post" action="<?php echo base_url('mensajes_c/enviarMen/') ?>">
                         <div class="form-group">
                             <label for="nombre_destino">Usuario destinatario:</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input id="rem_men" name="rem_men" type="hidden" value="<?php $_SESSION['id_login'] ?>">
-                                <input class="form-control" id="nombre_destino" name="nombre_destino" type="text"
-                                    placeholder="Usuario" aria-label="Usuario" aria-describedby="Usuario"
+                                <input class="form-control" id="nombre_destino" type="text" placeholder="Usuario"
+                                    aria-label="Usuario" aria-describedby="Usuario"
                                     value="<?php echo $perfil[0]['nombre_usu'] ?>" disabled>
                             </div>
                         </div>
+                        <!-- Hidden -->
+                        <input id="rem_men" name="rem_men" type="hidden" value="<?php echo $_SESSION['id_login'] ?>">
+                        <input id="des_men" name="des_men" type="hidden" value="<?php echo $perfil[0]['id_usu'] ?>">
+                        <input id="fecha_men" type="hidden" value="<?php echo date('Y-m-d') ?>">
+                        <!-- end Hidden -->
+                        <div class="form-group">
+                            <label for="titulo_men">Titulo</label>
+                            <input id="titulo_men" maxlength="50" name="titulo_men" class="form-control" type="text">
+                        </div>
                         <div class="form-group">
                             <div class="md-form amber-textarea active-amber-textarea-2">
-                                <label class="" for="desc_usu">Descripcion</label>
-                                <textarea type="text" id="desc_usu" name="desc_usu" class="md-textarea form-control"
+                                <label class="" for="cuerpo_men">Cuerpo Mensaje</label>
+                                <textarea type="text" id="cuerpo_men" name="cuerpo_men" class="md-textarea form-control"
                                     rows="8"></textarea>
                             </div>
                         </div>
                 </div>
                 <div class="modal-footer">
-                    Botones
+                    <button class="btn btn-success" type="submit">Enviar mensaje</button>
                 </div>
                 </form>
             </div>

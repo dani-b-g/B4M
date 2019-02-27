@@ -12,7 +12,11 @@ class Mensajes_m extends CI_Model
     }
 
     public function enviarMensajes($datos){
-        
+        return $this->db->insert("mensajes",$datos);
+    }
+    public function noLeidos($user){
+        $this->db->count_all()
+        ->where("");
     }
 }
     
