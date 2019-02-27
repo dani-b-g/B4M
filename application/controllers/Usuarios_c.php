@@ -127,6 +127,7 @@ class Usuarios_c extends CI_Controller
     {
         $this->load->model("Usuarios_m");
         $respuesta = $this->Usuarios_m->getLogin($this->input->post());
+        $id = $this->Usuarios_m->getId($_POST['nombre_usu']);
 
         if ($respuesta) {
             $pass = $this->input->post("pass_usu");
@@ -134,6 +135,7 @@ class Usuarios_c extends CI_Controller
 
                 $dataSesion = array(
                     'usuario' => $this->input->post('nombre_usu'),
+                    'id_login' => $id,
                     'login' => true,
                     'tipo' => $this->input->post('tipo_usu'),
                     'flashdata' => "Login correcto con usuario " . $this->input->post('nombre_usu')
@@ -147,6 +149,8 @@ class Usuarios_c extends CI_Controller
         } else {
             $_SESSION['flashdata'] = "El usuario " . $this->input->post('nombre_usu') . " no existe.";
         }
-        redirect(base_url('login_c/'));
+        redirect(base_url('
+login_c/'));
     }
 }
+

@@ -26,8 +26,9 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-secondary" type="button">Enviar un mensaje</button>
-                <?php if ($_SESSION['usuario'] == $perfil[0]['nombre_usu']): ?>
+                <button class="btn btn-secondary" data-toggle="modal" data-target="#modalMensaje" id="formMensaje"
+                    type="button">Enviar un mensaje</button>
+                <?php if ($_SESSION["id_login"] == $perfil[0]['id_usu']): ?>
                 <button class="btn btn-primary" id="modalActivate" type="button" data-toggle="modal"
                     data-target="#modalPerfil" type="button">Modificar perfil</button>
                 <?php endif; ?>
@@ -105,8 +106,48 @@
             </div>
         </div>
     </div>
-    <!-- TODO: ENVIAR CAMBIOS DE PERFIL -->
-    <!-- Modal -->
+    <!-- Modal Mensaje -->
+    <div class="modal fade" tabindex="-1" id="modalMensaje" role="dialog" aria-labelledby="formMensaje"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formMensaje">Mensaje</h5>
+                    <button class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="">
+                        <div class="form-group">
+                            <label for="nombre_destino">Usuario destinatario:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input id="rem_men" name="rem_men" type="hidden" value="<?php $_SESSION['id_login'] ?>">
+                                <input class="form-control" id="nombre_destino" name="nombre_destino" type="text"
+                                    placeholder="Usuario" aria-label="Usuario" aria-describedby="Usuario"
+                                    value="<?php echo $perfil[0]['nombre_usu'] ?>" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="md-form amber-textarea active-amber-textarea-2">
+                                <label class="" for="desc_usu">Descripcion</label>
+                                <textarea type="text" id="desc_usu" name="desc_usu" class="md-textarea form-control"
+                                    rows="8"></textarea>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    Botones
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Fin Modal Mensaje -->
+    <!-- Modal cambios -->
     <div class="modal fade " id="modalPerfil" tabindex="-1" role="dialog" aria-labelledby="modalPerfil"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -216,7 +257,6 @@
 </div>
 <script>
 // TODO: Que se muestren los instrumentos y los seleccionados por el usuario
-// NOTE: Tienes la id del usuario ne el boton de enviar
 /**
  * Evento para ver u ocultar la pass
  */

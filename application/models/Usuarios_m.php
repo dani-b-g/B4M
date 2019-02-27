@@ -8,7 +8,13 @@ class Usuarios_m extends CI_Model
 
         return $this->db->insert("usuarios", $datos);
     }
-
+    public function getId($usuario)
+    {
+        return $this->db->select('id_usu')
+            ->from('usuarios')
+            ->where('nombre_usu', $usuario)
+            ->get()->row()->id_usu;
+    }
     public function existeEnDB($usu)
     {
 

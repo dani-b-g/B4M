@@ -90,7 +90,8 @@
                 <div class="dropdown-menu dropdown-menu-right dropdown-secondary"
                     aria-labelledby="navbarDropdownMenuLink-55">
                     <a class="dropdown-item" href="<?php echo base_url("/usuarios_c/logout") ?>">Logout</a>
-                    <a class="dropdown-item" href="#">Perfil</a>
+                    <a class="dropdown-item"
+                        href="<?php echo base_url("/usuarios_c/perfil/{$_SESSION['usuario']}") ?>">Perfil</a>
                     <a class="dropdown-item" href="#">Mensajes</a>
                 </div>
             </li>
