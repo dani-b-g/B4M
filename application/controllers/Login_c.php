@@ -16,4 +16,3 @@ class Login_c extends CI_Controller
         $this->load->view('template_v', $datos);
     }
 }
-

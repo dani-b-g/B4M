@@ -22,3 +22,4 @@ class Instrumentos_c extends CI_Controller
         return $datos;
     }
 }
+

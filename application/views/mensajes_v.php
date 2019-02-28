@@ -8,13 +8,13 @@
             <?php echo $usuario; ?>
         </div>
         <div class="card-body">
-            <?php print_r($mensajes) ?>
             <h5 class="card-title">Mensajes</h5>
             <div class="card-text">
                 <ul class="list-group">
                     <?php foreach ($mensajes as $value): ?>
-                    <li class="mensajes" data-mensaje-type='<?php echo $value->id_men ?>' id='id=<?php echo $value->rem_men ?>' class="list-group-item d-flex btn purple-gradient justify-content-between align-items-center">
-                        <h5>
+                    <li data-mensaje-type='<?php echo $value->id_men ?>' id='<?php echo $value->rem_men ?>'
+                        class="list-group-item d-flex btn purple-gradient justify-content-between align-items-center mensajes">
+                        <h5 id="remMen" data-rem-type="<?php echo $value->salida  ?>">
                             <?php echo $value->salida  ?>
                         </h5>
                         <h6>
@@ -34,7 +34,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mensaje" aria-hidden="true">
+<div id="modalMensaje" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mensaje" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -44,26 +44,33 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div id=contenidoMen>
-                    <div>
-                        <div id="fechaMen">
+                <div id="contenidoMen">
+                    <h5 id="cuerpoMen">
+                    </h5>
+                    <div class="row">
+                        <div class="col">
+                            <p id="fechaMen">
+                            </p>
                         </div>
-                        <div id="remitenteMen">
+                        <div class="col">
+                            <p id="remitenteMen">
+                            </p>
                         </div>
                     </div>
                 </div>
                 <hr>
-                <h1>Respuesta:</h1>
+                <h4>Respuesta:</h4>
                 <form method="post" action="">
-                    <input id="rem_men" name="rem_men" type="hidden" value="">
+                    <input id="des_men" name="des_men" type="hidden" value="">
                     <div class="form-group">
                         <label for="titulo_men">Titulo</label>
                         <input id="titulo_men" maxlength="50" name="titulo_men" class="form-control" type="text">
                     </div>
                     <div class="form-group">
                         <div class="md-form amber-textarea active-amber-textarea-2">
-                            <label class="" for="desc_usu">Cuerpo Mensaje</label>
-                            <textarea type="text" id="desc_usu" name="desc_usu" class="md-textarea form-control" rows="8"></textarea>
+                            <label class="" for="cuerpo_men">Cuerpo Mensaje</label>
+                            <textarea type="text" id="cuerpo_men" name="cuerpo_men" class="md-textarea form-control"
+                                rows="5"></textarea>
                         </div>
                     </div>
             </div>
@@ -75,13 +82,28 @@
     </div>
 </div>
 <script>
-    $('.mensajes').on('click', function(event) {
-        idmen = $(this).attr('data-mensaje-type');
-        $.post(baseurl + "mensajes_c/contMens/", {
-            id_men: idmen
-        }).done(function(salida) {
-            // TODO: llamada a que quede como en visto el mensaje
-            // TODO: llamada a abrir el modal con los datos del mensaje
-        });
-    })
-</script> 
+$('.mensajes').on('click', function(event) {
+    idmen = $(this).attr('data-mensaje-type');
+    $.post(baseurl + "mensajes_c/contMens/", {
+        id_men: idmen
+    }).done(function(salida) {
+        salida = JSON.parse(salida);
+        $('#tituloMensaje').text(salida[0].titulo_men);
+        $('#cuerpoMen').text(salida[0].cuerpo_men);
+        $('#fechaMen').text(salida[0].fecha_men);
+        $('#des_men').val(salida[0].rem_men);
+        $('#remitenteMen').text($('#remMen').attr("data-rem-type"));
+        $('#modalMensaje').modal();
+
+    });
+
+    $.post(baseurl + "mensajes_c/setleido/", {
+        id_men: idmen
+    }).done(function(salida) {
+        if (salida == "1") {
+            $("li[data-mensaje-type='" + idmen + "']").find('span').find('i').removeClass().addClass(
+                'fas fa-envelope-open');
+        }
+    });
+})
+</script>

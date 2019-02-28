@@ -19,6 +19,7 @@ class Mensajes_c extends CI_Controller
     public function enviarMen()
     {
         $this->load->model("Mensajes_m");
+        $_POST['fecha_men'] = date('Y-m-d');
         if ($this->Mensajes_m->enviarMensajes($_POST)) {
             $_SESSION['flashdata'] = "Mensaje enviado con exito";
         } else {
@@ -30,9 +31,25 @@ class Mensajes_c extends CI_Controller
     {
         $mensaje = $_POST['id_men'];
         $this->load->model("Mensajes_m");
-        return $this->Mensajes_m->getMensajes($mensaje);
+        echo json_encode($this->Mensajes_m->getContenido($mensaje));
     }
-    public function contNoLeidos($user)
+    public function contNoLeidos()
 
-    { }
+    {
+        $this->load->model("Mensajes_m");
+        $user = $_SESSION['id_login'];
+        return $this->Mensajes_m->noLeidos($user);
+    }
+    public function setLeido()
+    {
+        $mensaje = $_POST['id_men'];
+        $this->load->model("Mensajes_m");
+        $mensaje = $this->Mensajes_m->getContenido($mensaje);
+        if ($mensaje[0]->estado_men == 0) {
+            $this->Mensajes_m->setLeido($mensaje[0]->id_men);
+            echo "1";
+        } else {
+            echo "0";
+        }
+    }
 }
