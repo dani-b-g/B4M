@@ -40,7 +40,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
-            <?php if (isset($_SESSION['login']) && $_SESSION['login'] == true): ?>
+            <?php if (isset($_SESSION['login']) && $_SESSION['login'] == true) : ?>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo (base_url()); ?>">Inicio
@@ -52,7 +52,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo (base_url()); ?>">Ver avisos</a>
                 </li>
-                <?php if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'a'): ?>
+                <?php if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'a') : ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Administración
@@ -100,15 +100,14 @@
             </li>
         </ul>
         <?php endif; ?>
-        </div>
-        <script>
-        // TODO:Termianar esto, preguntar a jesus
-        $('#busqueda').on("keyup", function(event) {
-            $.post(baseurl + "usuarios_c/buscador/", {
-                busqueda: $('#busqueda').val();
-            }).done(function(salida) {
-
-            });
-        })
-        </script>
     </nav>
+    <script>
+    // TODO:Termianar esto, preguntar a jesus
+    $('#busqueda').on("keyup", function(event) {
+        $.post(baseurl + "usuarios_c/buscador/", {
+            busqueda: $('#busqueda').val()
+        }).done(function(salida) {
+
+        });
+    })
+    </script>

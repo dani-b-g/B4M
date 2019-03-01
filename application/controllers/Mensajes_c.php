@@ -25,7 +25,7 @@ class Mensajes_c extends CI_Controller
         } else {
             $_SESSION['flashdata'] = "Hubo un error al enviar el mensaje";
         }
-        redirect("usuarios_c/perfil/{$_SESSION['usuario']}");
+        redirect("usuarios_c/perfil/{$_SESSION['usuario']}/");
     }
     public function contMens()
     {

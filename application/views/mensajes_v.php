@@ -1,7 +1,10 @@
 <div class="container mt-5">
-
-
-
+    <?php if (isset($_SESSION['flashdata'])) : ?>
+    <div class="alert alert-success" role="alert">
+        <?php echo $_SESSION['flashdata'];
+        unset($_SESSION['flashdata']); ?>
+    </div>
+    <?php endif; ?>
     <div class="card">
         <div class="card-header">
             Mensajes de:
@@ -11,7 +14,7 @@
             <h5 class="card-title">Mensajes</h5>
             <div class="card-text">
                 <ul class="list-group">
-                    <?php foreach ($mensajes as $value): ?>
+                    <?php foreach ($mensajes as $value) : ?>
                     <li data-mensaje-type='<?php echo $value->id_men ?>' id='<?php echo $value->rem_men ?>'
                         class="list-group-item d-flex btn purple-gradient justify-content-between align-items-center mensajes">
                         <h5 id="remMen" data-rem-type="<?php echo $value->salida  ?>">
@@ -21,9 +24,9 @@
                             <?php echo $value->titulo_men  ?>
                         </h6>
                         <span class="badge badge-dark badge-pill">
-                            <?php if ($value->estado_men == 0): ?>
+                            <?php if ($value->estado_men == 0) : ?>
                             <i class="fas fa-envelope"></i>
-                            <?php else: ?>
+                            <?php else : ?>
                             <i class="fas fa-envelope-open"></i>
                             <?php endif; ?>
                         </span>
@@ -34,6 +37,7 @@
         </div>
     </div>
 </div>
+<!-- Modal mensaje -->
 <div id="modalMensaje" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mensaje" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -60,17 +64,19 @@
                 </div>
                 <hr>
                 <h4>Respuesta:</h4>
-                <form method="post" action="">
+                <form method="post" action="<?php echo base_url('/mensajes_c/enviarmen/') ?>">
                     <input id="des_men" name="des_men" type="hidden" value="">
+                    <input id="rem_men" type="hidden" value="<?php echo $_SESSION['id_login'] ?>">
                     <div class="form-group">
                         <label for="titulo_men">Titulo</label>
-                        <input id="titulo_men" maxlength="50" name="titulo_men" class="form-control" type="text">
+                        <input id="titulo_men" maxlength="50" name="titulo_men" class="form-control" type="text"
+                            required>
                     </div>
                     <div class="form-group">
                         <div class="md-form amber-textarea active-amber-textarea-2">
                             <label class="" for="cuerpo_men">Cuerpo Mensaje</label>
                             <textarea type="text" id="cuerpo_men" name="cuerpo_men" class="md-textarea form-control"
-                                rows="5"></textarea>
+                                rows="5" required></textarea>
                         </div>
                     </div>
             </div>
@@ -81,6 +87,7 @@
         </div>
     </div>
 </div>
+<!-- Fin modal -->
 <script>
 $('.mensajes').on('click', function(event) {
     idmen = $(this).attr('data-mensaje-type');
@@ -101,8 +108,8 @@ $('.mensajes').on('click', function(event) {
         id_men: idmen
     }).done(function(salida) {
         if (salida == "1") {
-            $("li[data-mensaje-type='" + idmen + "']").find('span').find('i').removeClass().addClass(
-                'fas fa-envelope-open');
+            $("li[data-mensaje-type='" + idmen + "']")
+                .find('span').find('i').removeClass().addClass('fas fa-envelope-open');
         }
     });
 })
