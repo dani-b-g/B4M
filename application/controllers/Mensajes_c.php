@@ -38,7 +38,7 @@ class Mensajes_c extends CI_Controller
     {
         $this->load->model("Mensajes_m");
         $user = $_SESSION['id_login'];
-        return $this->Mensajes_m->noLeidos($user);
+        echo $this->Mensajes_m->noLeidos($user);
     }
     public function setLeido()
     {

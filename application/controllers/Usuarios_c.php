@@ -12,20 +12,13 @@ class Usuarios_c extends CI_Controller
     public function perfil($user)
     {
         //en el caso de que el perfil exista lo mostrara
-        // if ($this->comprobarExiste($user) > 0) {
 
-        // $user datos para pasar a las vistas
         $datos['titulo'] = "Perfil de: " . $user;
         $datos['contenido'] = "perfiles_v";
         $this->load->model("Instrumentos_m");
         $datos['instrumentos'] = $this->Instrumentos_m->getIns();
         $this->load->model("Usuarios_m");
         $datos['perfil'] = $this->Usuarios_m->getPerfil($user);
-        // } else {
-        //  en el caso contrario lo enviara a una pagina de error
-        // $datos['titulo'] = "Perfil no existe";
-        // $datos['contenido'] = "errorperf_v";
-        // }
         $this->load->view('template_v', $datos);
     }
 
@@ -36,12 +29,18 @@ class Usuarios_c extends CI_Controller
      */
     public function buscador()
     {
-        // if (!isset($_POST['busqueda'])) {
-        //     echo "0";
+
+
+        // if (strlen($busqueda > 2)) {
+        //     $datos = $this->Usuarios_m->getBuscador($busqueda);
+        //     echo json_encode($datos);
         // }
-        $this->load->model('Usuarios_c');
-        $busqueda = $_POST['busqueda'];
-        return $this->Usuarios_m->getBuscador($busqueda);
+    }
+
+    public function encontrado()
+    {
+        $usuario = $_POST['busqueda'];
+        redirect(base_url("usuarios_c/perfil/{$usuario}"));
     }
 
     /**
@@ -169,3 +168,4 @@ class Usuarios_c extends CI_Controller
         redirect(base_url('login_c/'));
     }
 }
+

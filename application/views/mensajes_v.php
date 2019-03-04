@@ -49,15 +49,19 @@
             </div>
             <div class="modal-body">
                 <div id="contenidoMen">
-                    <h5 id="cuerpoMen">
-                    </h5>
+
+                    <div class="col">
+                        <h3>Cuerpo del mensaje:</h3>
+                        <p style="font-size: 1.2em" id="cuerpoMen">
+                        </p>
+                    </div>
                     <div class="row">
                         <div class="col">
-                            <p id="fechaMen">
+                            <p class="font-weight-bold" id="fechaMen">
                             </p>
                         </div>
                         <div class="col">
-                            <p id="remitenteMen">
+                            <p class="font-weight-bold" id="remitenteMen">
                             </p>
                         </div>
                     </div>
@@ -88,29 +92,4 @@
     </div>
 </div>
 <!-- Fin modal -->
-<script>
-$('.mensajes').on('click', function(event) {
-    idmen = $(this).attr('data-mensaje-type');
-    $.post(baseurl + "mensajes_c/contMens/", {
-        id_men: idmen
-    }).done(function(salida) {
-        salida = JSON.parse(salida);
-        $('#tituloMensaje').text(salida[0].titulo_men);
-        $('#cuerpoMen').text(salida[0].cuerpo_men);
-        $('#fechaMen').text(salida[0].fecha_men);
-        $('#des_men').val(salida[0].rem_men);
-        $('#remitenteMen').text($('#remMen').attr("data-rem-type"));
-        $('#modalMensaje').modal();
-
-    });
-
-    $.post(baseurl + "mensajes_c/setleido/", {
-        id_men: idmen
-    }).done(function(salida) {
-        if (salida == "1") {
-            $("li[data-mensaje-type='" + idmen + "']")
-                .find('span').find('i').removeClass().addClass('fas fa-envelope-open');
-        }
-    });
-})
-</script>
+<script src="<?php echo base_url('assets/js/mensajes_v.js') ?>"></script>

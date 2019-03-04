@@ -8,6 +8,7 @@ class Mensajes_m extends CI_Model
         return $this->db->select("*")
         ->from("mensajeria")
         ->where("des_men",$user)
+        ->order_by("fecha_men")
         ->get()->result();
     }
     public function getContenido($men){
@@ -24,7 +25,7 @@ class Mensajes_m extends CI_Model
     public function noLeidos($user){
         
         return $this->db->from("mensajes")
-            ->where('des-men', $user)
+            ->where('des_men', $user)
             ->where("estado_men",0)
             ->count_all_results();
     }

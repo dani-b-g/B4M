@@ -50,13 +50,13 @@ class Usuarios_m extends CI_Model
     }
     public function getBuscador($key)
     {
-        return $this->db->select('nombre_usu')
+        return $this->db->select('*')
             ->from("usuarios_instrumentos")
-            ->like("nombre_usu", $key)
+            ->or_like("nombre_usu", $key)
             ->or_like("apenom_usu", $key)
             ->or_like("ciudad_usu", $key)
             ->or_like("estilo_usu", $key)
-            ->or_loke("nombre_ins", $key)
+            ->or_like("nombre_ins", $key)
             ->get()->result();
     }
 

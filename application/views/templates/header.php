@@ -15,20 +15,12 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/css/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/template.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/template.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/header.css') ?>">
     <?php echo "<script> let baseurl='" . base_url() . "'</script>" ?>
     <title>
         <?php echo $titulo ?>
     </title>
-    <style>
-    #logo {
-        width: 125px;
-    }
-
-    #avatar {
-        width: 70px;
-    }
-    </style>
 </head>
 
 <body class="fondo-blur">
@@ -65,26 +57,32 @@
                 </li>
                 <?php endif; ?>
             </ul>
-            <form class="form-inline">
+            <form class="form-inline" method="post" action="<?php echo base_url('buscador_c/') ?>">
                 <div class="input-group md-form form-sm form-1 pl-0">
                     <div class="input-group-prepend">
                         <span class="input-group-text purple lighten-3" id="basic-text1"><i
                                 class="fas fa-search text-white" aria-hidden="true"></i></span>
                     </div>
-                    <input class="form-control my-0 py-1" type="text" id="busqueda" placeholder="Buscar usuarios">
+                    <input class="form-control my-0 py-1" type="text" id="busqueda" name='busqueda'
+                        placeholder="Buscar usuarios">
+                    <!-- <datalist id="usu" name="usu">
+
+                    </datalist> -->
+
                 </div>
             </form>
         </div>
         <ul class="navbar-nav ml-auto nav-flex-icons">
             <li class="nav-item">
-                <a class="nav-link waves-effect waves-light">1
+                <a href="<?php echo base_url('mensajes_c/mensajes') ?>" class="nav-link waves-effect waves-light">
+                    <span id="notificacion"></span>
                     <i class="fas fa-envelope"></i>
                 </a>
             </li>
             <li class="nav-item avatar dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <img id="avatar" src="<?php echo base_url() ?>assets/img/usuario.jpg"
+                    <img id="avatar" src="<?php echo base_url('assets/img/usuario.jpg') ?>"
                         class="rounded-circle z-depth-0" alt="avatar image">
                 </a>
                 <div class="font-weight-bolder text-uppercase text-center text-primary">
@@ -101,13 +99,24 @@
         </ul>
         <?php endif; ?>
     </nav>
+    <script src="<?php echo base_url('assets/js/header.js') ?>"></script>
     <script>
-    // TODO:Termianar esto, preguntar a jesus
-    $('#busqueda').on("keyup", function(event) {
-        $.post(baseurl + "usuarios_c/buscador/", {
-            busqueda: $('#busqueda').val()
-        }).done(function(salida) {
+    // NOTE: En el caso de querer poner sugerenicas en la barra de busqueda
+    // $('#busqueda').on("keyup", function(event) {
+    //     let buscar = $('#busqueda').val();
+    //     console.log(buscar);
 
-        });
-    })
+    //     $.post(baseurl + "usuarios_c/buscador/", {
+    //         busqueda: buscar
+    //     }).done(function(salida) {
+    //         let sal = JSON.parse(salida);
+    //         $('.opciones').remove();
+    //         for (let i = 0; i < sal.length; i++) {
+    //             $("#usu").append("<option class='opciones' value=" + sal[i].nombre_usu + ">" + sal[i]
+    //                 .nombre_usu + "</option>");
+
+    //         }
+
+    //     });
+    // })
     </script>
