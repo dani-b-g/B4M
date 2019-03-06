@@ -47,10 +47,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="custom-control custom-switch">
+                    <!-- <div class="custom-control custom-switch">
                         <input id="recordar" name="recordar" class="custom-control-input" type="checkbox">
                         <label for="recordar" class="custom-control-label">Recuardame</label>
-                    </div>
+                    </div> -->
 
                     <button type="submit" class="btn btn-primary">Login</button>
                     <button class="btn btn-secondary" id="btnregistro" data-toggle="modal" data-target="#registro"

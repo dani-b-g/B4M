@@ -38,12 +38,12 @@
                     <a class="nav-link" href="<?php echo (base_url()); ?>">Inicio
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="<?php echo (base_url()); ?>">Crear aviso</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo (base_url()); ?>">Ver avisos</a>
-                </li>
+                </li> -->
                 <?php if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'a') : ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
