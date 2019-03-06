@@ -51,7 +51,8 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-secondary" href="<?php echo base_url('usuarios_c/perfil/'); ?>">Volver al
+                    <a class="btn btn-secondary"
+                        href="<?php echo base_url('usuarios_c/perfil/' . $_SESSION['usuario']); ?>">Volver al
                         perfil</a>
                 </div>
             </div>

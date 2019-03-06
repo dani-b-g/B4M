@@ -79,6 +79,14 @@ class Usuarios_c extends CI_Controller
         $_SESSION['flashdata'] = "Cambios del perfil realizados con exito";
         redirect(base_url("usuarios_c/perfil/{$_SESSION['usuario']}"));
     }
+    public function getUsuario()
+    {
+        $user = $_GET['usuario'];
+        $this->load->model("Instrumentos_m");
+        $datos['instrumentos'] = $this->Instrumentos_m->getIns();
+        $this->load->model("Usuarios_m");
+        $datos['perfil'] = $this->Usuarios_m->getPerfil($user);
+    }
 
 
 
@@ -168,4 +176,3 @@ class Usuarios_c extends CI_Controller
         redirect(base_url('login_c/'));
     }
 }
-

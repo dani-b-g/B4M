@@ -27,6 +27,13 @@ class Mensajes_c extends CI_Controller
         }
         redirect(base_url("usuarios_c/perfil/{$_SESSION['usuario']}/"));
     }
+    public function getRespuesta()
+    {
+        $des = $_POST['des_men'];
+        $rem = $_POST['rem_men'];
+        $this->load->model("Mensajes_m");
+        echo json_encode($this->Mensajes_m->getRespuesta($rem, $des));
+    }
     public function contMens()
     {
         $mensaje = $_POST['id_men'];

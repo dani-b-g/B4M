@@ -17,8 +17,6 @@ class Usuarios_m extends CI_Model
     }
     public function existeEnDB($usu)
     {
-
-
         $this->db->from("usuarios");
         $this->db->where('nombre_usu', $usu);
         return $this->db->count_all_results();
@@ -110,3 +108,4 @@ class Usuarios_m extends CI_Model
         return $resultado->row()->id_usu;
     }
 }
+

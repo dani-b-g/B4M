@@ -181,9 +181,9 @@
                             <div class="input-group">
                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                             class="fas fa-email"><i class="fas fa-at"></i></i></span></div>
-                                <input id="email_usu" placeholder="E-Mail" name="email_usu"
-                                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control" type="email"
-                                    placeholder="usuario@dominio.com" required>
+                                <input value="<?php echo $perfil[0]['email_usu'] ?>" id="email_usu" placeholder="E-Mail"
+                                    name="email_usu" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                    class="form-control" type="email" placeholder="usuario@dominio.com" required>
                             </div>
                         </div>
 
@@ -216,9 +216,10 @@
                             </div>
                         </div>
                         <div class="mb-1">Tipo de usuario</div>
+                        <?php if ($perfil[0]['tipo_usu'] == "m") : ?>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="musico" name="tipo_usu" value="m" class="custom-control-input"
-                                required>
+                            <input type="radio" id="musico" name="tipo_usu" value="m" checked
+                                class="custom-control-input" required>
                             <label class="custom-control-label" for="musico">Músico</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
@@ -226,21 +227,34 @@
                                 required>
                             <label class="custom-control-label" for="grupo">Grupo</label>
                         </div>
+                        <?php elseif ($perfil[0]['tipo_usu'] == "g") : ?>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="musico" name="tipo_usu" value="m" class="custom-control-input"
+                                required>
+                            <label class="custom-control-label" for="musico">Músico</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="grupo" name="tipo_usu" value="g" checked
+                                class="custom-control-input" required>
+                            <label class="custom-control-label" for="grupo">Grupo</label>
+                        </div>
+                        <?php endif; ?>
                         <hr>
                         <div class="form-group">
                             <label for="apenom_usu">Nombre completo</label>
-                            <input id="apenom_usu" name="apenom_usu" class="form-control" type="text" maxlength="125"
-                                placeholder="Nombre y apellidos" required>
+                            <input id="apenom_usu" value="<?php echo $perfil[0]['apenom_usu']; ?>" name="apenom_usu"
+                                class="form-control" type="text" maxlength="125" placeholder="Nombre y apellidos"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="ciudad_usu">Ciudad</label>
-                            <input id="ciudad_usu" name="ciudad_usu" placeholder="Ciudad" maxlength="15"
-                                class="form-control" type="text" required>
+                            <input id="ciudad_usu" value="<?php echo $perfil[0]['ciudad_usu']; ?>" name="ciudad_usu"
+                                placeholder="Ciudad" maxlength="15" class="form-control" type="text" required>
                         </div>
                         <div class="form-group">
                             <label for="estilo_usu">Estilo músical</label>
-                            <input id="estilo_usu" name="estilo_usu" placeholder="Estilo músical" maxlength="25"
-                                class="form-control" type="text">
+                            <input id="estilo_usu" value="<?php echo $perfil[0]['estilo_usu']; ?>" name="estilo_usu"
+                                placeholder="Estilo músical" maxlength="25" class="form-control" type="text">
                         </div>
                         <div class="form-group">
                             <label for="instrumentos">Instrumentos</label>
@@ -256,7 +270,7 @@
                         <div class="md-form amber-textarea active-amber-textarea-2">
                             <label class="" for="desc_usu">Descripcion</label>
                             <textarea type="text" id="desc_usu" name="desc_usu" class="md-textarea form-control"
-                                rows="5"></textarea>
+                                rows="5"><?php echo $perfil[0]['desc_usu'] ?></textarea>
                         </div>
                 </div>
                 <div class="modal-footer">

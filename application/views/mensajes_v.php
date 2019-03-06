@@ -15,7 +15,8 @@
             <div class="card-text">
                 <ul class="list-group">
                     <?php foreach ($mensajes as $value) : ?>
-                    <li data-mensaje-type='<?php echo $value->id_men ?>' id='<?php echo $value->rem_men ?>'
+                    <li data-mensaje-type='<?php echo $value->id_men ?>' data-des-type='<?php echo $value->des_men ?>'
+                        id='<?php echo $value->rem_men ?>'
                         class="list-group-item d-flex btn purple-gradient justify-content-between align-items-center mensajes">
                         <h5 id="remMen" data-rem-type="<?php echo $value->salida  ?>">
                             <?php echo $value->salida  ?>
@@ -48,8 +49,15 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div id=mensajeAnterior>
+                    <div class="col">
+                        <h5>Mensaje anterior</h5>
+                        <blockquote class="blockquote">
+                            <p class="mb-0" id='last_men'></p>
+                        </blockquote>
+                    </div>
+                </div>
                 <div id="contenidoMen">
-
                     <div class="col">
                         <h3>Cuerpo del mensaje:</h3>
                         <p style="font-size: 1.2em" id="cuerpoMen">
@@ -70,6 +78,7 @@
                 <h4>Respuesta:</h4>
                 <form method="post" action="<?php echo base_url('/mensajes_c/enviarmen/') ?>">
                     <input id="des_men" name="des_men" type="hidden" value="">
+                    <input id="id_men" name="id_men" type="hidden" value="">
                     <input id="rem_men" name="rem_men" type="hidden" value="<?php echo $_SESSION['id_login'] ?>">
                     <div class="form-group">
                         <label for="titulo_men">Titulo</label>

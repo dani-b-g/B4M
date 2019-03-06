@@ -3,6 +3,7 @@
  */
 $('.mensajes').on('click', function (event) {
 	idmen = $(this).attr('data-mensaje-type');
+	$('#last_men').text("");
 	$.post(baseurl + "mensajes_c/contMens/", {
 		id_men: idmen
 	}).done(function (salida) {
@@ -13,6 +14,17 @@ $('.mensajes').on('click', function (event) {
 		$('#des_men').val(salida[0].rem_men);
 		$('#remitenteMen').text($('#remMen').attr("data-rem-type"));
 		$('#modalMensaje').modal();
+
+	});
+	rem = $(this).attr('id');
+	des = $(this).attr('data-des-type');
+
+	$.post(baseurl + "mensajes_c/getRespuesta/", {
+		rem_men: rem,
+		des_men: des
+	}).done(function (salida) {
+		salida = JSON.parse(salida);
+		$('#last_men').text(salida.cuerpo_men);
 
 	});
 	/**
