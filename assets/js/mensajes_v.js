@@ -10,23 +10,32 @@ $('.mensajes').on('click', function (event) {
 		salida = JSON.parse(salida);
 		$('#tituloMensaje').text(salida[0].titulo_men);
 		$('#cuerpoMen').text(salida[0].cuerpo_men);
+		$('#cuerpo_men').val("<<<" + salida[0].cuerpo_men + ">>>\nEscribe a partir de aqui:")
 		$('#fechaMen').text(salida[0].fecha_men);
 		$('#des_men').val(salida[0].rem_men);
 		$('#remitenteMen').text($('#remMen').attr("data-rem-type"));
 		$('#modalMensaje').modal();
 
 	});
-	rem = $(this).attr('id');
-	des = $(this).attr('data-des-type');
+	// rem = $(this).attr('id');
+	// des = $(this).attr('data-des-type');
 
-	$.post(baseurl + "mensajes_c/getRespuesta/", {
-		rem_men: rem,
-		des_men: des
-	}).done(function (salida) {
-		salida = JSON.parse(salida);
-		$('#last_men').text(salida.cuerpo_men);
+	// $.post(baseurl + "mensajes_c/getRespuesta/", {
+	// 	rem_men: rem,
+	// 	des_men: des
+	// }).done(function (salida) {
+	// 	salida = JSON.parse(salida);
+	// 	console.log(salida);
 
-	});
+	// 	if (!salida[1]) {
+	// 		$('#last_men').text(salida[1].cuerpo_men);
+
+	// 	} else {
+	// 		$('#last_men').text("<<No hay mensaje anterior>>");
+	// 	}
+
+
+	// });
 	/**
 	 * Para marcar el mensaje como leido
 	 */

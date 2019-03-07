@@ -24,7 +24,8 @@ class Mensajes_m extends CI_Model
             ->where("rem_men",$usu_rem)
             ->where("des_men",$usu_des)
             ->order_by("id_men",'DESC')
-            ->get()->row();
+            ->limit(2)
+            ->get()->result();
     }
 
     public function enviarMensajes($datos){
