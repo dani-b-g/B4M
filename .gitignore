@@ -1,6 +1,8 @@
-#------------UserChanges
-../.vscode/*
+#----UserChanges--
 
+/.vscode/*
+
+#-----------------
 .DS_Store
 
 application/cache/*
