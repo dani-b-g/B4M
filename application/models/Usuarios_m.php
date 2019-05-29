@@ -107,5 +107,10 @@ class Usuarios_m extends CI_Model
         $resultado = $this->db->get("usuarios");
         return $resultado->row()->id_usu;
     }
+    public function setImagen($id, $path)
+    {
+        return $this->db->set('img_usu', $path)
+            ->where('id_usu', $id)
+            ->update('usuarios');
+    }
 }
-

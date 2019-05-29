@@ -11,7 +11,8 @@ class Usuarios_c extends CI_Controller
      */
     public function perfil($user)
     {
-        //en el caso de que el perfil exista lo mostrara
+        // TODO: Libreria de imagenes
+        $this->load->library('image_lib');
 
         $datos['titulo'] = "Perfil de: " . $user;
         $datos['contenido'] = "perfiles_v";
@@ -22,25 +23,37 @@ class Usuarios_c extends CI_Controller
         $this->load->view('template_v', $datos);
     }
 
-    /**
-     * Funcion pra hacer un autosearch en ajax
-     *
-     * @return void
-     */
-    public function buscador()
-    {
-
-
-        // if (strlen($busqueda > 2)) {
-        //     $datos = $this->Usuarios_m->getBuscador($busqueda);
-        //     echo json_encode($datos);
-        // }
-    }
 
     public function encontrado()
     {
         $usuario = $_POST['busqueda'];
         redirect(base_url("usuarios_c/perfil/{$usuario}"));
+    }
+
+    public function setImagen()
+    {
+        $this->load->model('Usuarios_m');
+        $mi_archivo = 'img_usu';
+        $config['upload_path'] = "assets/img/avatares/";
+        $config['file_name'] = $_POST['id_usu2'];
+        $config['allowed_types'] = "jpg";
+        $config['max_size'] = "50000";
+        $config['max_width'] = "2000";
+        $config['max_height'] = "2000";
+        $config['overwrite'] = true;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload($mi_archivo)) {
+            //*** ocurrio un error
+            $data['uploadError'] = $this->upload->display_errors();
+            echo $this->upload->display_errors();
+            return;
+        } else {
+            $id = $config['file_name'];
+            $path = $config['upload_path'] . $config['file_name'] . ".jpg";
+            $this->Usuarios_m->setImagen($id, $path);
+        }
     }
 
     /**
@@ -131,10 +144,10 @@ class Usuarios_c extends CI_Controller
         echo $this->Usuarios_m->existeEnDB($user);
     }
     /**
- * Elimina todos los datos de sesion
- *
- * @return void
- */
+     * Elimina todos los datos de sesion
+     *
+     * @return void
+     */
     public function logout()
     {
         $dataSesion = array('usuario', 'login', 'tipo', 'flashdata');

@@ -38,12 +38,10 @@
                     <a class="nav-link" href="<?php echo (base_url()); ?>">Inicio
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="<?php echo (base_url()); ?>">Crear aviso</a>
-                </li>
+                <!-- TODO: CREAR POSTS  -->
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo (base_url()); ?>">Ver avisos</a>
-                </li> -->
+                    <a class="nav-link" href="<?php echo (base_url()); ?>">Crear post</a>
+                </li>
                 <?php if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'a') : ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
@@ -65,10 +63,6 @@
                     </div>
                     <input class="form-control my-0 py-1" type="text" id="busqueda" name='busqueda'
                         placeholder="Buscar usuarios">
-                    <!-- <datalist id="usu" name="usu">
-
-                    </datalist> -->
-
                 </div>
             </form>
         </div>
@@ -82,8 +76,13 @@
             <li class="nav-item avatar dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
+                    <?php if ($perfil[0]['img_usu'] == "") : ?>
                     <img id="avatar" src="<?php echo base_url('assets/img/usuario.jpg') ?>"
                         class="rounded-circle z-depth-0" alt="avatar image">
+                    <?php else : ?>
+                    <img id="avatar" src="<?php echo base_url($perfil[0]['img_usu']) ?>"
+                        class="rounded-circle z-depth-0" alt="avatar image">
+                    <?php endif; ?>
                 </a>
                 <div class="font-weight-bolder text-uppercase text-center text-primary">
                     <?php echo $_SESSION['usuario'] ?>

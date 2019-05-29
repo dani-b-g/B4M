@@ -1,5 +1,5 @@
 <?php if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
-    redirect(base_url("usuarios_c/perfil/" . $_SESSION['usuario']));
+    redirect(base_url("avisos_c/"));
 } ?>
 <div class="container mt-5">
     <div class="row">
@@ -8,13 +8,13 @@
             <?php if (isset($_SESSION['flashdata']) && !isset($_SESSION['login'])) : ?>
             <div class=" alert alert-danger" role="alert ">
                 <?php echo $_SESSION['flashdata'];
-                unset($_SESSION['flashdata']); ?>
+                    unset($_SESSION['flashdata']); ?>
             </div>
             <?php endif; ?>
             <?php if (isset($_SESSION['flashdata']) && $_SESSION['login'] == true) : ?>
             <div class="alert alert-success" role="alert">
                 <?php echo $_SESSION['flashdata'];
-                unset($_SESSION['flashdata']); ?>
+                    unset($_SESSION['flashdata']); ?>
             </div>
             <?php endif; ?>
         </div>

@@ -13,7 +13,7 @@ $('.mensajes').on('click', function (event) {
 		$('#cuerpo_men').val("<<<" + salida[0].cuerpo_men + ">>>\nEscribe a partir de aqui:")
 		$('#fechaMen').text(salida[0].fecha_men);
 		$('#des_men').val(salida[0].rem_men);
-		$('#remitenteMen').text($('#remMen').attr("data-rem-type"));
+		// $('#remitenteMen').text($('#remMen').attr("data-rem-type"));
 		$('#modalMensaje').modal();
 
 	});
