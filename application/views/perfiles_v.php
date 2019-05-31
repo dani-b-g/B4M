@@ -2,6 +2,7 @@
     $_SESSION['flashdata'] = "No tienes acceso a esta pagina si no estas registrado";
     redirect(base_url("login_c/"));
 } ?>
+<?php print_r($_SESSION); ?>
 <div class="container mt-5">
     <div class="row">
         <div class="col">

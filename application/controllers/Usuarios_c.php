@@ -11,9 +11,7 @@ class Usuarios_c extends CI_Controller
      */
     public function perfil($user)
     {
-        // TODO: Libreria de imagenes
         $this->load->library('image_lib');
-
         $datos['titulo'] = "Perfil de: " . $user;
         $datos['contenido'] = "perfiles_v";
         $this->load->model("Instrumentos_m");
@@ -48,11 +46,14 @@ class Usuarios_c extends CI_Controller
             //*** ocurrio un error
             $data['uploadError'] = $this->upload->display_errors();
             echo $this->upload->display_errors();
-            return;
+            $_SESSION['flashdata'] = 'Foto cambiada correctamente';
+            redirect(base_url("usuarios_c/perfil/{$_SESSION['usuario']}"));
         } else {
             $id = $config['file_name'];
             $path = $config['upload_path'] . $config['file_name'] . ".jpg";
             $this->Usuarios_m->setImagen($id, $path);
+            $_SESSION['flashdata'] = 'Foto cambiada correctamente';
+            redirect(base_url("usuarios_c/perfil/{$_SESSION['usuario']}"));
         }
     }
 
@@ -164,7 +165,9 @@ class Usuarios_c extends CI_Controller
     {
         $this->load->model("Usuarios_m");
         $respuesta = $this->Usuarios_m->getLogin($this->input->post());
+        print_r($respuesta);
         $id = $this->Usuarios_m->getId($_POST['nombre_usu']);
+        $img = $this->Usuarios_m->getImagen($id);
 
         if ($respuesta) {
             $pass = $this->input->post("pass_usu");
@@ -175,6 +178,7 @@ class Usuarios_c extends CI_Controller
                     'id_login' => $id,
                     'login' => true,
                     'tipo' => $this->input->post('tipo_usu'),
+                    'img_usu' => $img,
                     'flashdata' => "Login correcto con usuario " . $this->input->post('nombre_usu')
                 );
 

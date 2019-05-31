@@ -113,4 +113,11 @@ class Usuarios_m extends CI_Model
             ->where('id_usu', $id)
             ->update('usuarios');
     }
+    public function getImagen($id)
+    {
+        return $this->db->from('usuarios')
+            ->select('img_usu')
+            ->where('id_usu', $id)
+            ->get()->row()->img_usu;
+    }
 }

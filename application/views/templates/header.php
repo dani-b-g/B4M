@@ -26,7 +26,7 @@
 <body class="fondo-blur">
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark purple darken-4 lighten-1">
         <a class="navbar-brand" href="<?php echo base_url(); ?>"><img id=logo
-                src="<?php echo (base_url()); ?>/assets/img/logo.png" alt=""></a>
+                src="<?php echo (base_url('/assets/img/logo.png')); ?>" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
             aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -76,12 +76,12 @@
             <li class="nav-item avatar dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <?php if ($perfil[0]['img_usu'] == "") : ?>
+                    <?php if ($_SESSION['img_usu'] == "") : ?>
                     <img id="avatar" src="<?php echo base_url('assets/img/usuario.jpg') ?>"
                         class="rounded-circle z-depth-0" alt="avatar image">
                     <?php else : ?>
-                    <img id="avatar" src="<?php echo base_url($perfil[0]['img_usu']) ?>"
-                        class="rounded-circle z-depth-0" alt="avatar image">
+                    <img id="avatar" src="<?php echo base_url($_SESSION['img_usu']) ?>" class="rounded-circle z-depth-0"
+                        alt="avatar image">
                     <?php endif; ?>
                 </a>
                 <div class="font-weight-bolder text-uppercase text-center text-primary">
@@ -89,10 +89,10 @@
                 </div>
                 <div class="dropdown-menu dropdown-menu-right dropdown-secondary"
                     aria-labelledby="navbarDropdownMenuLink-55">
-                    <a class="dropdown-item" href="<?php echo base_url("/usuarios_c/logout") ?>">Logout</a>
                     <a class="dropdown-item"
                         href="<?php echo base_url("/usuarios_c/perfil/{$_SESSION['usuario']}") ?>">Perfil</a>
                     <a class="dropdown-item" href="<?php echo base_url("/mensajes_c/mensajes/") ?>">Mensajes</a>
+                    <a class="dropdown-item" href="<?php echo base_url("/usuarios_c/logout") ?>">Logout</a>
                 </div>
             </li>
         </ul>
