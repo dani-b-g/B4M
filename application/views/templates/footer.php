@@ -1,8 +1,3 @@
-<footer class="d-flex justify-content-center">
-    <div class="footer-copyright text-center py-3">
-        <a href="https://www.linkedin.com/in/daniel-barriga-grados-52670a179/">© 2019 Copyright: Daniel Barriga</a>
-    </div>
-</footer>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -16,7 +11,19 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/js/mdb.min.js">
 </script>
 
+<footer class="page-footer fixed-bottom  font-small blue">
 
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+        <a target="_blank" href="https://www.linkedin.com/in/daniel-barriga-grados/">© 2019 Copyright: Daniel Barriga
+        </a>
+        <a class="li-ic ml-2" target="_blank" href="https://www.linkedin.com/in/daniel-barriga-grados/">
+            <i class=" fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+        </a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
 </body>
 
 </html>
