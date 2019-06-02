@@ -21,6 +21,7 @@
     <title>
         <?php echo $titulo ?>
     </title>
+    <link rel="shortcut icon" href="<?php echo (base_url('assets/img/logo.png')) ?>" type="image/x-icon">
 </head>
 
 <body class="fondo-blur">
@@ -38,10 +39,9 @@
                     <a class="nav-link" href="<?php echo (base_url()); ?>">Inicio
                     </a>
                 </li>
-                <!-- TODO: CREAR POSTS  -->
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo (base_url()); ?>">Crear post</a>
-                </li>
+                <!-- <li class="nav-item">
+                            <a class="nav-link" href="<?php echo (base_url('avisos_c/crear/')); ?>">Crear post</a>
+                        </li> -->
                 <?php if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'a') : ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
