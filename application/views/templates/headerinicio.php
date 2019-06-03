@@ -15,7 +15,7 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/css/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/template.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/templatein.css">
     <?php echo "<script> let baseurl='" . base_url() . "'</script>" ?>
     <title>
         <?php echo $titulo ?>

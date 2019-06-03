@@ -2,24 +2,8 @@ body {
 	background-image: url('../img/fondo.png');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	overflow: hidden;
 }
-
-.fondo-blur {
-	position: relative;
-
-}
-
-html {
-	min-height: 100%;
-	position: relative;
-  }
-  footer {
-	bottom: 0;
-	/* height: 100px; valor que necesites */
-	position: absolute;
-	width: 100%;
-	
-  }
 
 
 

@@ -1,3 +1,5 @@
+<style>
+</style>
 <div class="container mt-5">
     <section class="view">
         <div class="row">
@@ -18,7 +20,7 @@
 
             </div>
             <div class="col-md-6">
-                <div class="view">
+                <div class="view h-90">
                     <img src="<?php echo base_url('assets/img/inicio.jpg') ?>" class="img-fluid">
                 </div>
             </div>
