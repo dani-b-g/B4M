@@ -28,7 +28,7 @@
                     <div class="card-header border-secondary">
                         <div class="row">
                             <div class="col-10">
-                                <a href="<?php echo base_url("/usuarios_c/perfil/{$_SESSION['usuario']}") ?>"><img style="width: 70px;" class="rounded-circle z-depth-0" src="<?php echo base_url($aviso->img_usu) ?>"></a>
+                                <a href="<?php echo base_url("/usuarios_c/perfil/{$aviso->nombre_usu}") ?>"><img style="width: 70px;" class="rounded-circle z-depth-0" src="<?php echo base_url($aviso->img_usu) ?>"></a>
                                 <span class="h5 text-primary"><?php echo $aviso->nombre_usu ?></span>
                             </div>
                             <div class="col-2">
