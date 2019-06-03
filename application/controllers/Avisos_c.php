@@ -19,10 +19,10 @@ class Avisos_c extends CI_Controller
         $this->load->model('Avisos_m');
         $_POST['fecha_an'] = date('Y-m-d H:i:s');
         if ($this->Avisos_m->insertar($this->input->post())) {
-            $_SESSION['flashdata'] = "Aviso creado con exito";
+            $_SESSION['flashdata'] = "Post creado con exito";
             $_SESSION['error'] = false;
         } else {
-            $_SESSION['flashdata'] = "Aviso no creado, ha ocurrido un error";
+            $_SESSION['flashdata'] = "Post no creado, ha ocurrido un error";
             $_SESSION['error'] = true;
         }
         redirect(base_url('Avisos_c/'));
