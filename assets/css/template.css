@@ -9,6 +9,17 @@ body {
 
 }
 
+html {
+	min-height: 100%;
+	position: relative;
+  }
+  footer {
+	bottom: 0;
+	/* height: 100px; valor que necesites */
+	position: absolute;
+	width: 100%
+  }
+
 
 
 .fondo-blur::before {

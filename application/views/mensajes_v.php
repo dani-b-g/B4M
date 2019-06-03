@@ -80,7 +80,7 @@
                         <div class="md-form amber-textarea active-amber-textarea-2">
                             <label class="" for="cuerpo_men">Cuerpo Mensaje</label>
                             <textarea type="text" id="cuerpo_men" name="cuerpo_men" class="md-textarea form-control"
-                                rows="15" required></textarea>
+                                rows="10" required></textarea>
                         </div>
                     </div>
             </div>
