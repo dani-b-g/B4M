@@ -3,6 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Buscador_c extends CI_Controller
 {
+	/**
+	 * Carga la vista y datos de la busqueda
+	 *
+	 * @return void
+	 */
     public function index()
     {
         $busqueda = $_POST['busqueda'];

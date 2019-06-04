@@ -3,6 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Mensajes_c extends CI_Controller
 {
+	/**
+	 * Carga la vista de los mensajes y los mensajes dependiendo
+	 * del usuario logeado
+	 *
+	 * @return void
+	 */
     public function mensajes()
     {
         $id = $_SESSION['id_login'];
@@ -15,7 +21,13 @@ class Mensajes_c extends CI_Controller
         $datos['mensajes'] = $this->Mensajes_m->getMensajes($id);
 
         $this->load->view('template_v', $datos);
-    }
+	}
+	/**
+	 * Creara mensaje en bbdd y crear 
+	 * un feedback para el usuario
+	 *
+	 * @return void
+	 */
     public function enviarMen()
     {
         $this->load->model("Mensajes_m");
@@ -26,27 +38,49 @@ class Mensajes_c extends CI_Controller
             $_SESSION['flashdata'] = "Hubo un error al enviar el mensaje";
         }
         redirect(base_url("usuarios_c/perfil/{$_SESSION['usuario']}/"));
-    }
+	}
+	/**
+	 * Obtiene la respuesta de un 
+	 * mensaje para acoplarla al formulario
+	 *
+	 * @return void
+	 */
     public function getRespuesta()
     {
         $des = $_POST['des_men'];
         $rem = $_POST['rem_men'];
         $this->load->model("Mensajes_m");
         echo json_encode($this->Mensajes_m->getRespuesta($rem, $des));
-    }
+	}
+	/**
+	 * Obtener el contendo del mensaje
+	 *
+	 * @return void
+	 */
     public function contMens()
     {
         $mensaje = $_POST['id_men'];
         $this->load->model("Mensajes_m");
         echo json_encode($this->Mensajes_m->getContenido($mensaje));
-    }
+	}
+	/**
+	 * Cuenta los mensajes no leidos
+	 * del usuario logeado
+	 *
+	 * @return void
+	 */
     public function contNoLeidos()
 
     {
         $this->load->model("Mensajes_m");
         $user = $_SESSION['id_login'];
         echo $this->Mensajes_m->noLeidos($user);
-    }
+	}
+	/**
+	 * Cambia a leido un mensaje
+	 *
+	 * @return void
+	 */
     public function setLeido()
     {
         $mensaje = $_POST['id_men'];

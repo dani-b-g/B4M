@@ -4,6 +4,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Inicio_c extends CI_Controller
 {
 
+	/**
+	 * Cargara la vista del inicio
+	 *
+	 * @return void
+	 */
     public function index()
     {
         //datos para pasar a las vistas

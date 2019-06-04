@@ -5,8 +5,9 @@ class Usuarios_c extends CI_Controller
 {
     /**
      * Sera lo que cargue la viste de los perfiles de cada usuario
+	 * carga todos los datos de la vista asi como sus instrumentos
      *
-     * @param [type] $user
+     * @param [String] $user
      * @return void
      */
     public function perfil($user)
@@ -21,13 +22,22 @@ class Usuarios_c extends CI_Controller
         $this->load->view('template_v', $datos);
     }
 
-
+	/**
+	 * Cuando se realiza una peticinonb entrar en el perfil del usuario
+	 *
+	 * @return void
+	 */
     public function encontrado()
     {
         $usuario = $_POST['busqueda'];
         redirect(base_url("usuarios_c/perfil/{$usuario}"));
     }
-
+	/**
+	 * Guarda la imagen en el path de la aplicacion
+	 *  como llama al modelo para guardar el path en la bbdd
+	 *
+	 * @return void
+	 */
     public function setImagen()
     {
         $this->load->model('Usuarios_m');
@@ -73,14 +83,22 @@ class Usuarios_c extends CI_Controller
         } else {
             echo "false";
         }
-    }
+	}
+	/**
+	 * Enviamos todos los cambios del formulario de modificacion
+	 * de los datos del usuario
+	 *
+	 * @return void
+	 */
     public function enviarCambios()
     {
         $this->load->model("Usuarios_m");
         //Para recuperar los intrumentos y eliminarlos del post
         $instrumentos = $_POST['instrumentos'];
         $_POST['pass_usu'] = password_hash($this->input->post("pass_usu"), PASSWORD_DEFAULT);
-        unset($_POST['instrumentos']);
+		unset($_POST['instrumentos']);
+		//Eliminamso todos los intrumentos
+		// del usuario para volver a insertar la modificacion
         $this->Usuarios_m->limpiarUsuIns($_POST['id_usu']);
         foreach ($instrumentos as $value) {
             $datos = array(
@@ -92,7 +110,12 @@ class Usuarios_c extends CI_Controller
         $this->Usuarios_m->insertarCambiosUsu($_POST);
         $_SESSION['flashdata'] = "Cambios del perfil realizados con exito";
         redirect(base_url("usuarios_c/perfil/{$_SESSION['usuario']}"));
-    }
+	}
+	/**
+	 * Obtiene los datos del usuario
+	 *
+	 * @return void
+	 */
     public function getUsuario()
     {
         $user = $_GET['usuario'];
@@ -103,7 +126,11 @@ class Usuarios_c extends CI_Controller
     }
 
 
-
+	/**
+	 * REgistro de usuarios
+	 *
+	 * @return void
+	 */
     public function registrarUsuario()
     {
 
@@ -116,7 +143,7 @@ class Usuarios_c extends CI_Controller
         unset($_POST['instrumentos']);
         if ($this->Usuarios_m->insertar($this->input->post())) {
             $last = $this->Usuarios_m->getIdLastUsu();
-
+			//genera un array con toda la informacion que le pasaremos al modelo
             foreach ($instrumentos as $value) {
                 $datos = array(
                     'instrumento' => $value,
