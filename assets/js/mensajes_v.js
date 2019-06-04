@@ -17,25 +17,7 @@ $('.mensajes').on('click', function (event) {
 		$('#modalMensaje').modal();
 
 	});
-	// rem = $(this).attr('id');
-	// des = $(this).attr('data-des-type');
 
-	// $.post(baseurl + "mensajes_c/getRespuesta/", {
-	// 	rem_men: rem,
-	// 	des_men: des
-	// }).done(function (salida) {
-	// 	salida = JSON.parse(salida);
-	// 	console.log(salida);
-
-	// 	if (!salida[1]) {
-	// 		$('#last_men').text(salida[1].cuerpo_men);
-
-	// 	} else {
-	// 		$('#last_men').text("<<No hay mensaje anterior>>");
-	// 	}
-
-
-	// });
 	/**
 	 * Para marcar el mensaje como leido
 	 */
