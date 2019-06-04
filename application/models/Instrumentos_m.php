@@ -11,9 +11,9 @@ class Instrumentos_m extends CI_Model
 	 */
     public function getIns()
     {
-        $this->db->from("instrumentos");
-        $resultado = $this->db->get();
-        return $resultado->result_array();
+		return $this->db->from("instrumentos")
+			->order_by('nombre_ins','ASC')
+         	->get()->result_array();
     }
 
 
