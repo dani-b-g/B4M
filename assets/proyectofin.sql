@@ -216,7 +216,7 @@ INSERT INTO `usu_ins` (`instrumento`, `usuario`) VALUES
 --
 DROP TABLE IF EXISTS `avisos_usu`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `avisos_usu`  AS  select `anuncios`.`id_an` AS `id_an`,`anuncios`.`usu_an` AS `usu_an`,`anuncios`.`titulo_an` AS `titulo_an`,`anuncios`.`cuerpo_an` AS `cuerpo_an`,`anuncios`.`fecha_an` AS `fecha_an`,`usuarios`.`nombre_usu` AS `nombre_usu`,`usuarios`.`img_usu` AS `img_usu` from (`anuncios` join `usuarios` on((`anuncios`.`usu_an` = `usuarios`.`id_usu`))) ;
+CREATE SQL SECURITY DEFINER VIEW `avisos_usu`  AS  select `anuncios`.`id_an` AS `id_an`,`anuncios`.`usu_an` AS `usu_an`,`anuncios`.`titulo_an` AS `titulo_an`,`anuncios`.`cuerpo_an` AS `cuerpo_an`,`anuncios`.`fecha_an` AS `fecha_an`,`usuarios`.`nombre_usu` AS `nombre_usu`,`usuarios`.`img_usu` AS `img_usu` from (`anuncios` join `usuarios` on((`anuncios`.`usu_an` = `usuarios`.`id_usu`))) ;
 
 -- --------------------------------------------------------
 
@@ -225,7 +225,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `mensajeria`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mensajeria`  AS  select `mensajes`.`id_men` AS `id_men`,`mensajes`.`rem_men` AS `rem_men`,`mensajes`.`des_men` AS `des_men`,`mensajes`.`fecha_men` AS `fecha_men`,`mensajes`.`titulo_men` AS `titulo_men`,`mensajes`.`cuerpo_men` AS `cuerpo_men`,`mensajes`.`estado_men` AS `estado_men`,`usuarios`.`nombre_usu` AS `destino`,`usuarios`.`nombre_usu` AS `salida` from (`mensajes` join `usuarios` on((`mensajes`.`rem_men` = `usuarios`.`id_usu`))) ;
+CREATE SQL SECURITY DEFINER VIEW `mensajeria`  AS  select `mensajes`.`id_men` AS `id_men`,`mensajes`.`rem_men` AS `rem_men`,`mensajes`.`des_men` AS `des_men`,`mensajes`.`fecha_men` AS `fecha_men`,`mensajes`.`titulo_men` AS `titulo_men`,`mensajes`.`cuerpo_men` AS `cuerpo_men`,`mensajes`.`estado_men` AS `estado_men`,`usuarios`.`nombre_usu` AS `destino`,`usuarios`.`nombre_usu` AS `salida` from (`mensajes` join `usuarios` on((`mensajes`.`rem_men` = `usuarios`.`id_usu`))) ;
 
 -- --------------------------------------------------------
 
@@ -234,7 +234,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `usuarios_instrumentos`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `usuarios_instrumentos`  AS  select `usuarios`.`id_usu` AS `id_usu`,`usuarios`.`nombre_usu` AS `nombre_usu`,`usuarios`.`email_usu` AS `email_usu`,`usuarios`.`tipo_usu` AS `tipo_usu`,`usuarios`.`apenom_usu` AS `apenom_usu`,`usuarios`.`ciudad_usu` AS `ciudad_usu`,`usuarios`.`desc_usu` AS `desc_usu`,`usuarios`.`estilo_usu` AS `estilo_usu`,`instrumentos`.`id_ins` AS `id_ins`,`instrumentos`.`nombre_ins` AS `nombre_ins`,`usuarios`.`img_usu` AS `img_usu` from ((`usuarios` join `usu_ins` on((`usuarios`.`id_usu` = `usu_ins`.`usuario`))) join `instrumentos` on((`usu_ins`.`instrumento` = `instrumentos`.`id_ins`))) ;
+CREATE SQL SECURITY DEFINER VIEW `usuarios_instrumentos`  AS  select `usuarios`.`id_usu` AS `id_usu`,`usuarios`.`nombre_usu` AS `nombre_usu`,`usuarios`.`email_usu` AS `email_usu`,`usuarios`.`tipo_usu` AS `tipo_usu`,`usuarios`.`apenom_usu` AS `apenom_usu`,`usuarios`.`ciudad_usu` AS `ciudad_usu`,`usuarios`.`desc_usu` AS `desc_usu`,`usuarios`.`estilo_usu` AS `estilo_usu`,`instrumentos`.`id_ins` AS `id_ins`,`instrumentos`.`nombre_ins` AS `nombre_ins`,`usuarios`.`img_usu` AS `img_usu` from ((`usuarios` join `usu_ins` on((`usuarios`.`id_usu` = `usu_ins`.`usuario`))) join `instrumentos` on((`usu_ins`.`instrumento` = `instrumentos`.`id_ins`))) ;
 
 --
 -- Índices para tablas volcadas

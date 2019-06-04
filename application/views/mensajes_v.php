@@ -2,7 +2,7 @@
     <?php if (isset($_SESSION['flashdata'])) : ?>
     <div class="alert alert-success" role="alert">
         <?php echo $_SESSION['flashdata'];
-        unset($_SESSION['flashdata']); ?>
+            unset($_SESSION['flashdata']); ?>
     </div>
     <?php endif; ?>
     <div class="card mb-2">
@@ -70,7 +70,7 @@
                 <h4>Respuesta:</h4>
                 <form method="post" action="<?php echo base_url('/mensajes_c/enviarmen/') ?>">
                     <input id="des_men" name="des_men" type="hidden" value="">
-                    <input id="id_men" name="id_men" type="hidden" value="">
+                    <!-- <input id="id_men" name="id_men" type="hidden" value=""> -->
                     <div class="form-group">
                         <label for="titulo_men">Titulo</label>
                         <input id="titulo_men" maxlength="50" name="titulo_men" class="form-control" type="text"
