@@ -11,10 +11,25 @@ class Mensajes_m extends CI_Model
 	 */
     public function getMensajes($user)
     {
-
+		
         return $this->db->select("*")
             ->from("mensajeria")
             ->where("des_men", $user)
+            ->order_by("fecha_men", 'DESC')
+            ->get()->result();
+	}
+	/**
+	 * Recupera los enviados por un usuario
+	 *
+	 * @param [type] $user
+	 * @return void
+	 */
+    public function getEnviados($user)
+    {
+
+        return $this->db->select("*")
+            ->from("mensajeria")
+            ->where("rem_men", $user)
             ->order_by("fecha_men", 'DESC')
             ->get()->result();
 	}

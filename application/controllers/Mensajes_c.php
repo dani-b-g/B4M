@@ -21,7 +21,26 @@ class Mensajes_c extends CI_Controller
         $datos['mensajes'] = $this->Mensajes_m->getMensajes($id);
 
         $this->load->view('template_v', $datos);
-    }
+	}
+	/**
+	 * Carga la vista para ver los mensajes enviados
+	 *
+	 * @return void
+	 */
+	public function enviados(){
+
+		$id = $_SESSION['id_login'];
+        $usuario = $_SESSION['usuario'];
+        $datos['usuario'] = $usuario;
+        $datos['titulo'] = "Bandeja de salida de: " . $usuario;
+        $datos['contenido'] = "enviados_v";
+        $this->load->model("Mensajes_m");
+        $this->load->model("Usuarios_m");
+		$datos['mensajes'] = $this->Mensajes_m->getEnviados($id);
+		// $datos['mensajes']->nom_des=$this->Usuarios_m->getName($datos['mensajes']->destino);
+
+        $this->load->view('template_v', $datos);
+	}
     /**
      * Creara mensaje en bbdd y crear 
      * un feedback para el usuario

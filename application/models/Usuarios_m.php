@@ -74,7 +74,13 @@ class Usuarios_m extends CI_Model
             ->or_like("estilo_usu", $key)
             ->or_like("nombre_ins", $key)
             ->get()->result();
-    }
+	}
+	public function getName($id){
+		return $this->db->select('nombre_usu')
+		->from('usuarios')
+		->where('id_usu',$id)
+		->get()->row()->nombre_usu;
+	}
 
     /**
      * Elminamos los instrumentos de un usuario
