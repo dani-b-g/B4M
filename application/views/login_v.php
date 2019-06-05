@@ -61,7 +61,7 @@
     </div>
 </div>
 <div class="modal fade" tabindex="-1" id="registro" role="dialog" aria-labelledby="registro" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="registro">Registrarse</h5>

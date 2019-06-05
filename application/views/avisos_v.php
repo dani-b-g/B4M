@@ -44,6 +44,7 @@
                             <button class="btn btn-outline-danger borrarAviso waves-effect"
                                 id="<?php echo $aviso->id_an ?>" type="button">
                                 <i class="fas fa-trash-alt"></i></button>
+								
                             <?php endif; ?>
                         </div>
                     </div>
