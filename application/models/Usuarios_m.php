@@ -75,6 +75,12 @@ class Usuarios_m extends CI_Model
             ->or_like("nombre_ins", $key)
             ->get()->result();
 	}
+	/**
+	 * Obtiene el nombre del usuario a partir de su id
+	 *
+	 * @param [type] $id
+	 * @return void
+	 */
 	public function getName($id){
 		return $this->db->select('nombre_usu')
 		->from('usuarios')
