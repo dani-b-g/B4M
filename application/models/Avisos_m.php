@@ -9,20 +9,25 @@ class Avisos_m extends CI_Model
 	 * @param [type] $datos
 	 * @return void
 	 */
-    public function insertar($datos)
-    {
-        return $this->db->insert('anuncios', $datos);
+	public function insertar($datos)
+	{
+		return $this->db->insert('anuncios', $datos);
 	}
 	/**
 	 * Obtenemos todos los avisos
 	 *
 	 * @return void
 	 */
-    public function getAvisos()
-    {
-        return $this->db->select()
-            ->from('avisos_usu')
-            ->order_by('fecha_an', 'DESC')
-            ->get()->result();
-    }
+	public function getAvisos()
+	{
+		return $this->db->select()
+			->from('avisos_usu')
+			->order_by('fecha_an', 'DESC')
+			->get()->result();
+	}
+	public function eliminar($id)
+	{
+		return $this->db->where('id_an', $id)
+			->delete('anuncios');
+	}
 }

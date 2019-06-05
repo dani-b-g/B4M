@@ -28,11 +28,19 @@
                     <div class="card-header border-secondary">
                         <div class="row">
                             <div class="col-10">
-                                <a href="<?php echo base_url("/usuarios_c/perfil/{$aviso->nombre_usu}") ?>"><img style="width: 70px;" class="rounded-circle z-depth-0" src="<?php echo base_url($aviso->img_usu) ?>"></a>
+                                <a href="<?php echo base_url("/usuarios_c/perfil/{$aviso->nombre_usu}") ?>">
+                                    <?php if ($aviso->img_usu == "") : ?>
+                                        <img style="width: 70px;" class="rounded-circle z-depth-0" src="<?php echo base_url('assets/img/usuario.jpg') ?>"></a>
+                                <?php else : ?>
+                                    <img style="width: 70px;" class="rounded-circle z-depth-0" src="<?php echo base_url($aviso->img_usu) ?>"></a>
+                                <?php endif; ?>
                                 <span class="h5 text-primary"><?php echo $aviso->nombre_usu ?></span>
                             </div>
                             <div class="col-2">
                                 <span class="text-right"><?php echo $aviso->fecha_an ?></span>
+                                <?php if ($aviso->usu_an == $_SESSION['id_login']) ?>
+                                <button class="btn btn-outline-danger borrarAviso waves-effect" id="<?php echo $aviso->id_an ?>" type="button">
+                                    <i class="fas fa-trash-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -77,3 +85,4 @@
         </div>
     </form>
 </div>
+<script src="<?php echo base_url('assets/js/avisos_v.js') ?>"></script>

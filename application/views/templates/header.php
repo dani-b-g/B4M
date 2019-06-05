@@ -33,9 +33,6 @@
                         <a class="nav-link" href="<?php echo (base_url()); ?>">Inicio
                         </a>
                     </li>
-                    <!-- <li class="nav-item">
-                                                        <a class="nav-link" href="<?php echo (base_url('avisos_c/crear/')); ?>">Crear post</a>
-                                                    </li> -->
                     <?php if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'a') : ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administración
