@@ -90,23 +90,4 @@
         <?php endif; ?>
     </nav>
     <script src="<?php echo base_url('assets/js/header.js') ?>"></script>
-    <script>
-        // NOTE: En el caso de querer poner sugerenicas en la barra de busqueda
-        // $('#busqueda').on("keyup", function(event) {
-        //     let buscar = $('#busqueda').val();
-        //     console.log(buscar);
 
-        //     $.post(baseurl + "usuarios_c/buscador/", {
-        //         busqueda: buscar
-        //     }).done(function(salida) {
-        //         let sal = JSON.parse(salida);
-        //         $('.opciones').remove();
-        //         for (let i = 0; i < sal.length; i++) {
-        //             $("#usu").append("<option class='opciones' value=" + sal[i].nombre_usu + ">" + sal[i]
-        //                 .nombre_usu + "</option>");
-
-        //         }
-
-        //     });
-        // })
-    </script>

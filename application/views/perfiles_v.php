@@ -165,8 +165,8 @@
 </div>
 <!-- Fin Modal Mensaje -->
 <!-- Modal cambios -->
-<div class="modal fade " id="modalPerfil" tabindex="-1" role="dialog" aria-labelledby="modalPerfil" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade right" id="modalPerfil" tabindex="-1" role="dialog" aria-labelledby="modalPerfil" aria-hidden="true">
+    <div class="modal-dialog modal-full-height modal-right" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalPerfilHeader">Cambiar perfil</h5>

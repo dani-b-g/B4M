@@ -91,4 +91,26 @@
         </div>
     </form>
 </div>
+<div class="modal fade" id="confirmacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title w-100 font-weight-bold text-danger">¿Estas seguro que quieres borrar el post?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body row mx-3">
+        <div class="col">
+			<button class="btn btn-danger" data-id="" id="confBorrado" data-dismiss="modal" type="button">Borrar</button>
+		
+		</div>
+		<div class="col">
+			<button class="btn btn-info" data-dismiss="modal"  type="button">Cancelar</button>
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="<?php echo base_url('assets/js/avisos_v.js') ?>"></script>
