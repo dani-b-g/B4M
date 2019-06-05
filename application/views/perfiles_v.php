@@ -296,6 +296,7 @@
                                 <label class="custom-file-label" for="img_usu">Selecciona la imagen</label>
                             </div>
                         </div>
+								<small class="form-text text-muted">Sube solo en formato .jpg</small>
                 </div>
             </div>
             <div class="modal-footer">
